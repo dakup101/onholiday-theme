@@ -12,5 +12,5 @@
 </head>
 
 <body class="<?php echo get_page_template_slug(); ?> text-dark">
-    <?php get_template_part( THEME_CMP, "header" ) ?>
+    <?php get_template_part(THEME_CMP, "header"); ?>
     <main>

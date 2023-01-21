@@ -1,4 +1,5 @@
 module.exports = {
+    jit: true,
     content: [
         './functions/*.php',
         './components/*.php',

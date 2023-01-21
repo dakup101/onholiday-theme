@@ -1,5 +1,5 @@
 <?php
-function wp_get_menu_array($current_menu): array {
+function wp_get_menu_array($current_menu, $post_id): array {
 	$menu_name = $current_menu; //menu slug
 	$locations = get_nav_menu_locations();
 	$menu_obj = wp_get_nav_menu_object( $locations[ $menu_name ] );
@@ -8,19 +8,21 @@ function wp_get_menu_array($current_menu): array {
 	foreach ($array_menu as $m) {
 		if (empty($m->menu_item_parent)) {
 			$menu[$m->ID] = array();
-			$menu[$m->ID]['ID']      =   $m->ID;
-			$menu[$m->ID]['title']       =   $m->title;
-			$menu[$m->ID]['url']         =   $m->url;
-			$menu[$m->ID]['children']    =   array();
+			$menu[$m->ID]['ID'] = $m->ID;
+			$menu[$m->ID]['active'] = $post_id == $m->ID ? true : false;
+			$menu[$m->ID]['title'] = $m->title;
+			$menu[$m->ID]['url'] = $m->url;
+			$menu[$m->ID]['children'] = array();
+			$menu[$m->ID]['is_megamenu'] = get_field('is_megamenu', $m);
 		}
 	}
 	$submenu = array();
 	foreach ($array_menu as $m) {
 		if ($m->menu_item_parent) {
 			$submenu[$m->ID] = array();
-			$submenu[$m->ID]['ID']       =   $m->ID;
-			$submenu[$m->ID]['title']    =   $m->title;
-			$submenu[$m->ID]['url']  =   $m->url;
+			$submenu[$m->ID]['ID'] = $m->ID;
+			$submenu[$m->ID]['title'] = $m->title;
+			$submenu[$m->ID]['url'] = $m->url;
 			$menu[$m->menu_item_parent]['children'][$m->ID] = $submenu[$m->ID];
 		}
 	}

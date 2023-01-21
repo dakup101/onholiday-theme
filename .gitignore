@@ -1,0 +1,3 @@
+.env
+assets/compiled/*
+node_modules/*

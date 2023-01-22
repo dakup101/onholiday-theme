@@ -4,19 +4,19 @@
   "description": "OnHoliday WP Theme",
   "main": "/assets/js/theme.ts",
   "scripts": {
-    "dev": "npm-run-all --parallel webpack-watch tailwind-watch scss-watch",
+    "dev": "npm-run-all --parallel webpack-watch scss-watch",
     "build": "npm-run-all webpack tailwind scss",
     "webpack": "webpack",
     "webpack-watch": "webpack watch",
     "scss": "sass ./assets/sass/theme.scss ./assets/compiled/theme.css",
-    "scss-watch": "sass ./assets/sass/theme.scss ./assets/compiled/theme.css -w",
-    "tailwind": "tailwind -i ./assets/sass/tailwind.css -o ./assets/compiled/tailwind.css",
-    "tailwind-watch": "tailwind -i ./assets/sass/tailwind.css -o ./assets/compiled/tailwind.css --watch"
+    "scss-watch": "sass ./assets/sass/theme.scss ./assets/compiled/theme.css -w"
   },
   "author": "Danylo Kupriienko (dan@hooves.pl)",
   "license": "ISC",
   "devDependencies": {
-    "tailwindcss": "^3.1.2",
+    "i": "^0.3.7",
+    "mini-css-extract-plugin": "^1.3.0",
+    "npm": "^9.3.1",
     "ts-loader": "^9.2.8",
     "tsconfig-paths-webpack-plugin": "^3.5.2",
     "typescript": "^4.6.3",
@@ -32,10 +32,11 @@
     "node-fetch": "^3.2.10",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.14",
+    "postcss-cli": "^10.1.0",
     "postcss-import": "^14.1.0",
     "postcss-loader": "^7.0.0",
-    "simple-parallax-js": "^5.6.2",
     "sass": "^1.50.1",
+    "simple-parallax-js": "^5.6.2",
     "style-loader": "^3.3.1",
     "swiper": "^8.2.4"
   }

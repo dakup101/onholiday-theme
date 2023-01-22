@@ -1,5 +1,5 @@
 <?php $nav = wp_get_menu_array('primary', get_the_ID()); ?>
-<nav class="theme-header-nav">
+<nav class="theme-header-nav text-3xl">
     <?php if (!empty($nav)): ?>
     <ul>
         <?php foreach($nav['menus'] as $nav_item): ?>

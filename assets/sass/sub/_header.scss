@@ -1,0 +1,149 @@
+.header{
+    box-shadow: $shadow;
+    font-size: $fs-text-lg;
+    z-index: 100;
+    // Header Logo
+    &-logo{
+        display: block;
+        height: 80px;
+        width: fit-content;
+        &-img{
+            height: 100%;
+            width: auto;
+        }
+    }
+    &-content{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    // Header Nav
+    &-nav{
+        & ul{
+            list-style: none;
+            display: grid;
+            grid-auto-flow: column;
+            gap: 2.5rem;
+        }
+        &-item{
+            // Content
+            height: 80px;
+            display: flex;
+            align-items: center;
+            
+            &-link{
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                color: $color-dark;
+                font-weight: 600;
+                transition: all .2s ease-in-out;
+                &:hover{
+                    color: $color-accent;
+                    & .caret{
+                        transform: rotate(180deg);
+                    }
+                }
+                &.collapse{
+                    color: $color-accent;
+                    & .caret{
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+            &-caret{
+                flex-shrink: 0;
+                width: 1em;
+                height: 1em;
+                margin-left: .25em;
+                fill: currentColor;
+                opacity: .5;
+                transition: all .2s ease-in-out;
+            }
+            // Children
+            &-has-children{
+                position: relative;
+            }
+            &-child{
+                position: absolute;
+                top: 100%;
+                right: 0;
+                transition: all .2s ease-in-out;
+                &.hidden{
+                    opacity: 0;
+                    transform: translateY(3rem);
+                    pointer-events: none;
+                }
+            }
+            // Megamenu 
+            &-megamenu{
+                & .megamenu{
+                    gap: 0;
+                    border-bottom-left-radius: 1rem;
+                    border-bottom-right-radius: 1rem;
+                    overflow: hidden;
+                    position: relative;
+                    box-shadow: $shadow;
+                    &-item{
+                        width: 225px;
+                        position: relative;
+                        text-align: center;
+                        color: #fff;
+                        border-right: 2px solid #fff;
+                        overflow: hidden;
+                        &:last-child{
+                            border-right: 0;
+                        }
+                        &-content{
+                            z-index: 10;
+                            position: relative;
+                            padding: 2rem 1rem;
+                            display: grid;
+                            gap: 1rem
+                        }
+                        &-title{
+                            font-weight: bold;
+                        }
+                        &-desc{
+                            font-size: $fs-text;
+                            margin-bottom: 1rem;
+                        }
+                        &-bg{
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            z-index: 0;
+                            transition: all .2s ease-in-out;
+                            &-content{
+                                position: relative;
+                                width: 100%;
+                                height: 100%;
+                            }
+                            & .overlay{
+                                z-index: 20;
+                            }
+                            & img{
+                                z-index: 10;
+                                position: absolute;
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                                left: 0;
+                                top: 0;
+                            }
+                        }
+                        &:hover{
+                            & .megamenu-item{
+                                &-bg{
+                                    transform: scale(1.2);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -13,7 +13,9 @@ function wp_get_menu_array($current_menu, $post_id): array {
 			$menu[$m->ID]['title'] = $m->title;
 			$menu[$m->ID]['url'] = $m->url;
 			$menu[$m->ID]['children'] = array();
-			$menu[$m->ID]['is_megamenu'] = get_field('is_megamenu', $m);
+			
+			$is_megamenu = get_field('is_megamenu', $m);
+			$menu[$m->ID]['is_megamenu'] = $is_megamenu;
 		}
 	}
 	$submenu = array();
@@ -23,6 +25,14 @@ function wp_get_menu_array($current_menu, $post_id): array {
 			$submenu[$m->ID]['ID'] = $m->ID;
 			$submenu[$m->ID]['title'] = $m->title;
 			$submenu[$m->ID]['url'] = $m->url;
+
+			$is_megamenu = get_field('is_megamenu', $m);
+			$submenu[$m->ID]['is_megamenu'] = $is_megamenu;
+			if ($is_megamenu){
+				$submenu[$m->ID]['desc'] = get_field("desc", $m);
+				$submenu[$m->ID]['bg_img'] = get_field("bg_img", $m);
+			}
+
 			$menu[$m->menu_item_parent]['children'][$m->ID] = $submenu[$m->ID];
 		}
 	}

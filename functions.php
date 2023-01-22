@@ -5,6 +5,8 @@ define('THEME_URI', trailingslashit(esc_url(get_template_directory_uri())));
 define('THEME_FUN', THEME_DIR . 'functions/php-');
 define('THEME_IMG', THEME_URI . 'assets/img/');
 define('THEME_CMP', '/components/theme');
+define('THEME_CMP_CMN', '/components/common/theme');
+
 
 // Theme Functions
 require_once THEME_FUN . 'theme-setup.php';

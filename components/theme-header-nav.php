@@ -41,7 +41,7 @@ $nav = wp_get_menu_array('primary', get_the_ID());
                                 <?php echo $child['desc']; ?>
                             </p>
                             <a href="<?php echo $child['url'] ?>" class="btn btn-accent btn-content megamenu-item-link">
-                                Wybieram
+                                Sprawdź
                             </a>
                         </div>
                         <figure class="megamenu-item-bg">

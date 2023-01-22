@@ -16,9 +16,23 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        &-right{
+            display: flex;
+            align-items: center;
+        }
     }
     // Header Nav
     &-nav{
+        &-language{
+            margin-left: 2rem;
+            width: 185px;
+            & .select-value{
+                font-weight: 500;
+            }
+            & .select-options{
+                font-size: $fs-text;
+            }
+        }
         & ul{
             list-style: none;
             display: grid;
@@ -36,7 +50,7 @@
                 align-items: center;
                 text-decoration: none;
                 color: $color-dark;
-                font-weight: 600;
+                font-weight: 500;
                 transition: all .2s ease-in-out;
                 &:hover{
                     color: $color-accent;
@@ -67,11 +81,12 @@
             &-child{
                 position: absolute;
                 top: 100%;
-                right: 0;
+                right: 50%;
+                transform: translateX(50%);
                 transition: all .2s ease-in-out;
                 &.hidden{
                     opacity: 0;
-                    transform: translateY(3rem);
+                    transform: translateX(50%) translateY(3rem);
                     pointer-events: none;
                 }
             }
@@ -85,7 +100,7 @@
                     position: relative;
                     box-shadow: $shadow;
                     &-item{
-                        width: 225px;
+                        width: 250px;
                         position: relative;
                         text-align: center;
                         color: #fff;
@@ -132,13 +147,6 @@
                                 object-fit: cover;
                                 left: 0;
                                 top: 0;
-                            }
-                        }
-                        &:hover{
-                            & .megamenu-item{
-                                &-bg{
-                                    transform: scale(1.2);
-                                }
                             }
                         }
                     }

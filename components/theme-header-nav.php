@@ -46,7 +46,8 @@ $nav = wp_get_menu_array('primary', get_the_ID());
                         </div>
                         <figure class="megamenu-item-bg">
                             <div class="megamenu-item-bg-content">
-                                <img src="<?php echo $child['bg_img'] ?>" alt="<?php echo $child['title'] ?>">
+                                <img src="<?php echo $child['bg_img'] ?>" alt="<?php echo $child['title'] ?>"
+                                    loading="lazy">
                                 <div class="overlay dark"></div>
                             </div>
                         </figure>

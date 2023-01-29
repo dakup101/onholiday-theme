@@ -34,43 +34,19 @@ $hero = wp_parse_args( $args, array(
 
 <section class="hero <?php if ($hero["is_slider"]) echo "hero-slider" ?>">
     <?php if ($hero["is_slider"]): ?>
-    <?php else: ?>
-
-    <article class="hero-wrapper">
-        <?php $content = $hero["content"][0]; ?>
-
-        <main class="hero-inner container">
-            <h1 class="hero-title">
-                <?php echo $content["title"] ?>
-            </h1>
-            <p class="hero-content">
-                <?php echo $content["text"] ?>
-            </p>
-            <?php
-            $btn_main = $content["btn_main"];
-            $btn_additional = $content["btn_additional"];
-            if ($btn_main["active"] || $btn_additional["active"]) :
-            ?>
-            <div class="hero-btns">
-                <?php
-            if ($btn_additional['active']) get_template_part( THEME_CMP_CMN, "btn", $btn_additional );
-            if ($btn_main['active']) get_template_part( THEME_CMP_CMN, "btn", $btn_main );
-            ?>
+    <div class="hero-swiper">
+        <div class="swiper-wrapper">
+            <?php foreach($hero["content"] as $content) : ?>
+            <div class="swiper-slide">
+                <?php get_template_part( THEME_CMP, "hero-item", $content) ?>
             </div>
-            <?php endif; ?>
-        </main>
-
-        <figure class="hero-bg">
-            <?php if ($content["bg_img"] && !$content["bg_video"]) : ?>
-            <img src="<?php echo $content["bg_img"] ?>" alt="<?php echo $content["title"] ?>" class="hero-bg-img">
-            <?php endif; ?>
-            <?php if ($content["bg_video"]) : ?>
-            <video class="hero-bg-video lazy" autoplay loop muted poster="<?php echo $content["bg_img"]; ?>">
-                <source data-src="<?php echo $content["bg_video"]; ?>" type="video/mp4">
-            </video>
-            <?php endif; ?>
-        </figure>
-        <figure class="hero-overlay"></figure>
-    </article>
+            <?php endforeach; ?>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+    <?php else: ?>
+    <?php get_template_part( THEME_CMP, "hero-item", $hero["content"][0] ) ?>
     <?php endif; ?>
 </section>

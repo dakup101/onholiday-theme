@@ -2,6 +2,14 @@
     box-shadow: $shadow;
     font-size: $fs-text-lg;
     z-index: 200;
+    top: -80px;
+    left: 0;
+    background: #fff;
+    transition: all .2s ease-in-out;
+    &.sticky{
+        top: 0;
+        position: sticky;
+    }
     // Header Logo
     &-logo{
         display: block;

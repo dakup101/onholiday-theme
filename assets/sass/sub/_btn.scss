@@ -36,6 +36,16 @@
             background: $color-accent-dark;
             border-color: $color-accent-dark;
         }
+        &-dark{
+            background: transparent;
+            border: 1px solid $color-dark;
+            color: $color-dark;
+            &:hover{
+                background: $color-accent-dark;
+                border-color: $color-accent-dark;
+                color: #fff;
+            }
+        }
     }
     &-content{
         width: fit-content;

@@ -6,11 +6,8 @@
     "btn_link" => "#",
     "btn_text" => "Wanna see more?"
 ) ) ?>
-<section class="info-section right">
+<section class="info-section left">
     <article class="container info-section-inner">
-        <figure class="info-section-img">
-            <img src="<?php echo $info["img"] ?>" alt="<?php echo $info["title"] ?>">
-        </figure>
         <main class="info-section-content">
             <?php get_template_part( THEME_CMP_CMN, "text-title", array(
                 "title" => $info["title"],
@@ -27,5 +24,8 @@
                     "type" => "alt-dark",
             ) ) ?>
         </main>
+        <figure class="info-section-img">
+            <img src="<?php echo $info["img"] ?>" alt="<?php echo $info["title"] ?>">
+        </figure>
     </article>
 </section>

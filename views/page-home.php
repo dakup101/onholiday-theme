@@ -47,5 +47,7 @@ get_template_part(THEME_CMP, "search-form");
 </section>
 <?php get_template_part(THEME_CMP, "icons-row") ?>
 <?php get_template_part(THEME_CMP, "cta", get_field("cta")) ?>
-
+<?php get_template_part(THEME_CMP, "info-right", get_field("info-right")) ?>
+<?php get_template_part(THEME_CMP, "info-left", get_field("info-left")) ?>
+<?php get_template_part(THEME_CMP, "blog-grid", get_field("blog_grid_fields", "options")) ?>
 <?php get_footer(); ?>

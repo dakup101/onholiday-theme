@@ -8,7 +8,6 @@ export default function swiperHero() {
 	console.log("--- Swiper Hero Loaded --");
 	const swiper = new Swiper(".hero-swiper", {
 		modules: [Navigation, Pagination, Autoplay, EffectFade],
-		autoHeight: true,
 		preloadImages: false,
 		lazy: true,
 		effect: "fade",

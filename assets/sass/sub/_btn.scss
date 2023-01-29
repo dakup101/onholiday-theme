@@ -3,6 +3,7 @@
     font-size: $fs-text;
     border-radius: 1000px;
     text-decoration: none;
+    text-align: center;
     cursor: pointer;
     box-shadow: $shadow;
     transition: all .2s ease-in-out;
@@ -19,9 +20,13 @@
             border-color: $color-accent-dark;
         }
     }
-    &-content{
-        width: fit-content;
-        margin: 0 auto;
+    &-dark{
+        background: $color-dark;
+        border: 1px solid $color-dark;
+        color: #fff;
+        &:hover{
+            background: $color-accent-dark;
+        }
     }
     &-alt{
         background: transparent;
@@ -31,5 +36,12 @@
             background: $color-accent-dark;
             border-color: $color-accent-dark;
         }
+    }
+    &-content{
+        width: fit-content;
+        margin: 0 auto;
+    }
+    &-full{
+        width: 100%;
     }
 }

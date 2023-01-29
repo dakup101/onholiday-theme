@@ -1,0 +1,26 @@
+.search-form{
+    background: $color-accent;
+    padding: 1.25rem 0;
+    & .container{
+        width: 100%;
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: 1fr 1.25fr .75fr 1.25fr .75fr;
+    }
+    & .select{
+        &-value{
+            &-wrapper{
+                padding-left: 1em;
+                padding-right: 1em;
+                border-radius: 1000px;
+                border: 1px solid $color-dark-lighter;
+                & .caret{
+                    margin-left: auto;
+                }
+                &.collapse{
+                    border-color: $color-dark;
+                }
+            }
+        }
+    }
+}

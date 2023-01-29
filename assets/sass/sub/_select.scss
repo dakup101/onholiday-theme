@@ -52,6 +52,7 @@
         list-style: none;
         box-shadow: $shadow-lg;
         border: 1px solid #f2f2f2;
+        border-radius: .5em;
         &-item{
             padding: .35em 1em;
             border-bottom: 1px solid #f2f2f2;

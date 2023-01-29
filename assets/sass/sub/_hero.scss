@@ -1,0 +1,63 @@
+.hero{
+    color: white;
+    &-inner{
+        position: relative;
+        min-height: 380px;
+        padding: 5rem 0;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    &-wrapper{
+        position: relative;
+    }
+    &-title{
+        font-size: $fs-title-lg;
+        text-align: center;
+        text-shadow: $shadow;
+        & span{
+            color: $color-accent;
+        }
+    }
+    &-content{
+        font-size: $fs-text-lg;
+        margin: 2rem auto;
+        max-width: 1024px;
+        text-align: center;
+        text-shadow: $shadow;
+    }
+    &-btns{
+        display: flex;
+        & a + button, & a + a, & button + a, & button + button{
+            margin-left: 2rem;
+        }
+    }
+    &-overlay{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, .35);
+        z-index: 5;
+        pointer-events: none;
+    }
+    &-bg{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        pointer-events: none;
+        &-img, &-video{
+            object-fit: cover;
+            object-position: top;
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

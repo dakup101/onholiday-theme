@@ -1,7 +1,7 @@
 .header{
     box-shadow: $shadow;
     font-size: $fs-text-lg;
-    z-index: 100;
+    z-index: 200;
     // Header Logo
     &-logo{
         display: block;
@@ -84,6 +84,7 @@
                 right: 50%;
                 transform: translateX(50%);
                 transition: all .2s ease-in-out;
+                z-index: 20;
                 &.hidden{
                     opacity: 0;
                     transform: translateX(50%) translateY(3rem);
@@ -110,7 +111,7 @@
                             border-right: 0;
                         }
                         &-content{
-                            z-index: 10;
+                            z-index: 20;
                             position: relative;
                             padding: 2rem 1rem;
                             display: grid;

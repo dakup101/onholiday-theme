@@ -4,7 +4,7 @@ $btn = wp_parse_args( $args, array(
     "link" => "#",
     "text" => "I'm button!",
     "class" => null,
-    "type" => "main",
+    "type" => "accent",
     "no_follow" => false,
 ) )
 ?>

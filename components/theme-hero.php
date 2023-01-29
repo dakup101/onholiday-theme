@@ -12,7 +12,7 @@ $hero = wp_parse_args( $args, array(
                 "link" => "#",
                 "text" => "Main button",
                 "class" => null,
-                "type" => "main",
+                "type" => "accent",
                 "no_follow" => false,
             ),
             "btn_additional" => array(
@@ -35,13 +35,15 @@ $hero = wp_parse_args( $args, array(
 <section class="hero <?php if ($hero["is_slider"]) echo "hero-slider" ?>">
     <?php if ($hero["is_slider"]): ?>
     <?php else: ?>
+
     <article class="hero-wrapper">
         <?php $content = $hero["content"][0]; ?>
-        <main class="hero-inner">
+
+        <main class="hero-inner container">
             <h1 class="hero-title">
                 <?php echo $content["title"] ?>
             </h1>
-            <p>
+            <p class="hero-content">
                 <?php echo $content["text"] ?>
             </p>
             <?php
@@ -57,14 +59,18 @@ $hero = wp_parse_args( $args, array(
             </div>
             <?php endif; ?>
         </main>
-        <?php if ($content["bg_img"]) : ?>
-        <img src="<?php echo $content["bg_img"] ?>" alt="<?php echo $content["title"] ?>" class="hero-bg">
-        <?php endif; ?>
-        <?php if ($content["bg_video"]) : ?>
-        <video class="lazy" autoplay loop muted poster="<?php echo $content["bg_img"]; ?>">
-            <source data-src="<?php echo $content["bg_video"]; ?>" type="video/mp4">
-        </video>
-        <?php endif; ?>
+
+        <figure class="hero-bg">
+            <?php if ($content["bg_img"] && !$content["bg_video"]) : ?>
+            <img src="<?php echo $content["bg_img"] ?>" alt="<?php echo $content["title"] ?>" class="hero-bg-img">
+            <?php endif; ?>
+            <?php if ($content["bg_video"]) : ?>
+            <video class="hero-bg-video lazy" autoplay loop muted poster="<?php echo $content["bg_img"]; ?>">
+                <source data-src="<?php echo $content["bg_video"]; ?>" type="video/mp4">
+            </video>
+            <?php endif; ?>
+        </figure>
+        <figure class="hero-overlay"></figure>
     </article>
     <?php endif; ?>
 </section>

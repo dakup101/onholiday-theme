@@ -6,6 +6,10 @@
     cursor: pointer;
     box-shadow: $shadow;
     transition: all .2s ease-in-out;
+    display: block;
+    &:hover{
+        box-shadow: $shadow-lg;
+    }
     &-accent{
         background: $color-accent;
         border: 1px solid $color-accent;
@@ -18,5 +22,14 @@
     &-content{
         width: fit-content;
         margin: 0 auto;
+    }
+    &-alt{
+        background: transparent;
+        border: 1px solid #fff;
+        color: #fff;
+        &:hover{
+            background: $color-accent-dark;
+            border-color: $color-accent-dark;
+        }
     }
 }

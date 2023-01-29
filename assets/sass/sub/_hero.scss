@@ -82,4 +82,10 @@
             }
         }
     }
+    &.cta .hero{
+        &-content{
+            font-size: $fs-text;
+            max-width: 991px;
+        }
+    }
 }

@@ -1,6 +1,7 @@
 .select{
     display: block;
     position: relative;
+    z-index: 20;
     & select{
         display: none;
     }

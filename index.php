@@ -1,3 +1,3 @@
 <?php get_header(); ?>
-this is index.php
+<?php get_template_part(THEME_CMP, "hero", array()) ?>
 <?php get_footer(); ?>

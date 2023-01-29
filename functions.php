@@ -4,6 +4,8 @@ define('THEME_DIR', trailingslashit(get_template_directory()));
 define('THEME_URI', trailingslashit(esc_url(get_template_directory_uri())));
 define('THEME_FUN', THEME_DIR . 'functions/php-');
 define('THEME_IMG', THEME_URI . 'assets/img/');
+define('THEME_VID', THEME_URI . 'assets/video/');
+
 define('THEME_CMP', '/components/theme');
 define('THEME_CMP_CMN', '/components/common/theme');
 

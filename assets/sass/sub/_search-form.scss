@@ -1,6 +1,7 @@
 .search-form{
     background: $color-accent;
     padding: 1.25rem 0;
+    margin-bottom: 3rem;
     & .container{
         width: 100%;
         display: grid;
@@ -14,6 +15,7 @@
                 padding-right: 1em;
                 border-radius: 1000px;
                 border: 1px solid $color-dark-lighter;
+                font-size: $fs-text;
                 & .caret{
                     margin-left: auto;
                 }

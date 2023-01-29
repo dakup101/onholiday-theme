@@ -1,0 +1,25 @@
+.text{
+    &-title{
+        display: flex;
+        flex-direction: column-reverse;
+        font-size: $fs-title-sm;
+        margin-bottom: 1.25rem;
+        & strong{
+            font-size: $fs-text;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: $color-accent;
+            font-weight: 400;
+            margin-bottom: .25em;
+        }
+    }
+    &-center{
+        text-align: center;
+    }
+    &-right{
+        text-align: right;
+    }
+    &-left{
+        text-align: left;
+    }
+}

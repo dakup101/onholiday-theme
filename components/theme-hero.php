@@ -62,7 +62,7 @@ $hero = wp_parse_args( $args, array(
         <?php endif; ?>
         <?php if ($content["bg_video"]) : ?>
         <video class="lazy" autoplay loop muted poster="<?php echo $content["bg_img"]; ?>">
-            <source data-src="<?php echo $content["bg_video"]; ?>" type="vide/mp4">
+            <source data-src="<?php echo $content["bg_video"]; ?>" type="video/mp4">
         </video>
         <?php endif; ?>
     </article>

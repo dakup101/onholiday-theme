@@ -18,6 +18,7 @@ require_once THEME_FUN . 'menu-array.php';
 require_once THEME_FUN . 'disable-gutenberg.php';
 require_once THEME_FUN . 'disable-jquery.php';
 require_once THEME_FUN . 'make-menu-item-classes.php';
+require_once THEME_FUN . 'allow-svg.php';
 
 
 // Post Types

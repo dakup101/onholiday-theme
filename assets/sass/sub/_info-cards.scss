@@ -1,0 +1,59 @@
+.info-cards{
+    display: flex;
+    gap: 2rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    &-item{
+        flex-basis: calc(50% - 1rem);
+        display: flex;
+        align-items: center;
+        background: #fff;
+        border-radius: 1rem;
+        padding: 1.25rem 1.5rem;
+        box-shadow: $shadow;
+        transition: all .2s ease-in-out;
+        &:hover{
+            box-shadow: $shadow-lg;
+        }
+        &-title{
+            font-size: $fs-title-sm;
+        }
+        &-text{
+            margin: .5rem 0;
+        }
+        &-link{
+            color: $color-accent;
+            font-weight: 500;
+            text-decoration: underline;
+            transition: all .2s ease-in-out;
+            &:hover{
+                color: $color-accent-dark;
+                padding-left: .5rem;
+            }
+        }
+        &-icon{
+            width: 130px;
+            aspect-ratio: 1/1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $color-dark-lighter;
+            background: #F9F9F9;
+            border: 2px solid #eee;
+            border-radius: .75rem;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+
+            & svg{
+                width: 50px;
+                height: auto;
+                color: inherit;
+                fill: currentColor;
+                & * {
+                    fill: currentColor;
+                }
+            }
+        }
+    }
+}

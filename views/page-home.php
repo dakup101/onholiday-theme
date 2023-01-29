@@ -43,5 +43,7 @@ get_template_part(THEME_CMP, "search-form");
             "class" => "search-form-action btn-content",
             "type" => "accent",
     ) ) ?>
+    <?php get_template_part( THEME_CMP, "info-cards", get_field("cards") ) ?>
 </section>
+<?php get_template_part(THEME_CMP, "icons-row") ?>
 <?php get_footer(); ?>

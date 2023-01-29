@@ -62,5 +62,24 @@
     }
     &-slider{
         position: relative;
+        & .swiper{
+            &-button{
+                &-next, &-prev{
+                    color: #fff;
+                }
+                &-disabled{
+                    opacity: .6 !important;
+                }
+            }
+            &-pagination{
+                &-bullet{
+                    background: #fff;
+                    opacity: .6;
+                    &-active{
+                        opacity: 1;
+                    }
+                }
+            }
+        }
     }
 }

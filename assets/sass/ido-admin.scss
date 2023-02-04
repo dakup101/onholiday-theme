@@ -1,0 +1,47 @@
+$color-accent: #FFA000;
+
+.ido {
+    &-container {
+        background: #fff;
+        margin-right: 20px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding: 20px;
+    }
+
+    &-inner {
+        margin-bottom: 26px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &-input-group {
+        margin-bottom: 1em;
+
+        & label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: .5em;
+        }
+    }
+
+    &-msg {
+        margin-bottom: 1em;
+        max-width: fit-content;
+        width: 100%;
+        padding: 1em;
+        box-shadow: 0 6px 10px rgba(0, 0, 0, .1);
+        border-radius: 5px;
+        border: 1px solid $color-accent;
+    }
+
+    &-btn {
+        min-width: 200px;
+        padding: 1em;
+        border-radius: 5px;
+        box-shadow: 0 6px 10px rgba(0, 0, 0, .1);
+        margin-bottom: 16px;
+    }
+}

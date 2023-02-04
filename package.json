@@ -4,12 +4,14 @@
   "description": "OnHoliday WP Theme",
   "main": "/assets/js/theme.ts",
   "scripts": {
-    "dev": "npm-run-all --parallel webpack-watch scss-watch",
-    "build": "npm-run-all webpack tailwind scss",
+    "dev": "npm-run-all --parallel webpack-watch scss-watch scss-ido-watch",
+    "build": "npm-run-all webpack tailwind scss scss-ido",
     "webpack": "webpack",
     "webpack-watch": "webpack watch",
     "scss": "sass ./assets/sass/theme.scss ./assets/compiled/theme.css",
-    "scss-watch": "sass ./assets/sass/theme.scss ./assets/compiled/theme.css -w"
+    "scss-watch": "sass ./assets/sass/theme.scss ./assets/compiled/theme.css -w",
+    "scss-ido" : "sass ./assets/sass/ido-admin.scss ./assets/compiled/ido-admin.css",
+    "scss-ido-watch": "sass ./assets/sass/ido-admin.scss ./assets/compiled/ido-admin.css -w"
   },
   "author": "Danylo Kupriienko (dan@hooves.pl)",
   "license": "ISC",

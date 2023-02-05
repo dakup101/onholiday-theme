@@ -8,6 +8,7 @@ class IdoBooking
     public function __construct()
     {
         $this->update_client();
+        $this->language = "pol";
     }
 
     public function update_db($systemClient, $systemLogin, $systemPWD)
@@ -48,6 +49,6 @@ class IdoBooking
     }
     public function get_key()
     {
-        return sha1(date("Ymd")) . $this->client->systemPwd;
+        return sha1(date("Ymd") . $this->client->systemPwd);
     }
 }

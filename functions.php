@@ -20,8 +20,11 @@ require_once THEME_FUN . 'disable-gutenberg.php';
 require_once THEME_FUN . 'disable-jquery.php';
 require_once THEME_FUN . 'make-menu-item-classes.php';
 require_once THEME_FUN . 'allow-svg.php';
+require_once THEME_FUN . 'remove-post-term.php';
 
 // *** Post Types *** //
+
+require_once THEME_FUN . 'post-type-ido-apartament.php';
 
 // *** Taxonomies *** //
 
@@ -29,13 +32,18 @@ require_once THEME_FUN . 'allow-svg.php';
 
 require_once THEME_FUN . 'acf-options-page.php';
 
-// *** AJAX *** ??
+// *** AJAX *** //
+
 
 // *** IDO BOOKING *** //
 
 // Ido Booking - main API class
-require_once THEME_IDO . 'class-idoBooking.php';
+require_once THEME_IDO . 'class-IdoBooking.php';
+// Ido Booking - API commands extend
+require_once THEME_IDO . 'class-IdoBooking-API.php';
 // Ido Booking - admin page
 require_once THEME_IDO . 'admin-page.php';
 // Ido Booking - create db table on theme switch (@ after_switch_theme)
 require_once THEME_IDO . 'db-table.php';
+require_once THEME_IDO . 'ajax-make-posts.php';
+require_once THEME_IDO . 'ajax-update-posts.php';

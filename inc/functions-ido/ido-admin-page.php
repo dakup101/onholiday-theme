@@ -16,7 +16,7 @@ add_action('admin_menu', 'ido_admin');
 
 function ido_admin_content()
 {
-    $ido = new IdoBooking;
+    $ido = new IdoBooking_API;
     $client_upd = false;
 
 
@@ -68,14 +68,50 @@ function ido_admin_content()
                 <input type="password" id="clientPWD" name="clientPWD" value="<?php if (!empty($client)) echo $client->systemPwd ?>">
             </div>
 
-            <input type="submit" value="Zapisz" class="ido-btn btn-accent">
+            <input type="submit" value="Zapisz" class="ido-btn ido-btn-accent">
         </form>
+        <div class="ido-inner">
+            <h2>Pobierz i utwórz apartamenty z IdoBooking</h2>
+            <p>Apartamenty z IdoBooking są przechowywane w systemie WP do wewnętrznego użytkowania strony. Istniejące
+                apartamenty zostaną pominięte.</p>
+            <button class="ido-make-posts ido-btn ido-btn-accent">Pobierz Apartamenty</button>
+            <div class="ido-make-posts-output ido-output">
+                <div class="ido-loading">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4335 4335" width="25" height="25">
+                        <path fill="#FFA000" d="M3346 1077c41,0 75,34 75,75 0,41 -34,75 -75,75 -41,0 -75,-34 -75,-75 0,-41 34,-75 75,-75zm-1198 -824c193,0 349,156 349,349 0,193 -156,349 -349,349 -193,0 -349,-156 -349,-349 0,-193 156,-349 349,-349zm-1116 546c151,0 274,123 274,274 0,151 -123,274 -274,274 -151,0 -274,-123 -274,-274 0,-151 123,-274 274,-274zm-500 1189c134,0 243,109 243,243 0,134 -109,243 -243,243 -134,0 -243,-109 -243,-243 0,-134 109,-243 243,-243zm500 1223c121,0 218,98 218,218 0,121 -98,218 -218,218 -121,0 -218,-98 -218,-218 0,-121 98,-218 218,-218zm1116 434c110,0 200,89 200,200 0,110 -89,200 -200,200 -110,0 -200,-89 -200,-200 0,-110 89,-200 200,-200zm1145 -434c81,0 147,66 147,147 0,81 -66,147 -147,147 -81,0 -147,-66 -147,-147 0,-81 66,-147 147,-147zm459 -1098c65,0 119,53 119,119 0,65 -53,119 -119,119 -65,0 -119,-53 -119,-119 0,-65 53,-119 119,-119z" />
+                    </svg>
+                </div>
+                <div class="ido-response">
+
+                </div>
+            </div>
+        </div>
+        <div class="ido-inner">
+            <h2>Zaktualizuj apartamenty na stronie</h2>
+            <p>Dopiero pobrałeś apartamenty na stronę? Zmiany? Nowe zdjęcia? Zaktualizuj swoje apartamenty, by wypełnić je w
+                treści z IdoBooking</p>
+            <button class="ido-update-posts ido-btn ido-btn-accent">Aktualizuj apartamenty</button>
+            <div class="ido-update-posts-output ido-output">
+                <div class="ido-loading">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4335 4335" width="25" height="25">
+                        <path fill="#FFA000" d="M3346 1077c41,0 75,34 75,75 0,41 -34,75 -75,75 -41,0 -75,-34 -75,-75 0,-41 34,-75 75,-75zm-1198 -824c193,0 349,156 349,349 0,193 -156,349 -349,349 -193,0 -349,-156 -349,-349 0,-193 156,-349 349,-349zm-1116 546c151,0 274,123 274,274 0,151 -123,274 -274,274 -151,0 -274,-123 -274,-274 0,-151 123,-274 274,-274zm-500 1189c134,0 243,109 243,243 0,134 -109,243 -243,243 -134,0 -243,-109 -243,-243 0,-134 109,-243 243,-243zm500 1223c121,0 218,98 218,218 0,121 -98,218 -218,218 -121,0 -218,-98 -218,-218 0,-121 98,-218 218,-218zm1116 434c110,0 200,89 200,200 0,110 -89,200 -200,200 -110,0 -200,-89 -200,-200 0,-110 89,-200 200,-200zm1145 -434c81,0 147,66 147,147 0,81 -66,147 -147,147 -81,0 -147,-66 -147,-147 0,-81 66,-147 147,-147zm459 -1098c65,0 119,53 119,119 0,65 -53,119 -119,119 -65,0 -119,-53 -119,-119 0,-65 53,-119 119,-119z" />
+                    </svg>
+                </div>
+                <div class="ido-response">
+
+                </div>
+            </div>
+        </div>
     </div>
     <style>
         <?php echo file_get_contents(THEME_DIR . "assets/compiled/ido-admin.css") ?>
     </style>
-<?php
+    <script src="<?php echo THEME_URI . "assets/js/ido-admin.js" ?>">
+        <?php
 
-    $ido->print_client();
-}
-?>
+        $ido->print_client();
+        echo "<pre>";
+        print_r($ido->get_object(24, 1));
+        echo "</pre>";
+    }
+        ?>

@@ -1,10 +1,14 @@
-<?php 
-// title, text, icon, link, link_text 
-$card = wp_parse_args( $args, array());
+<?php
+// title, text, is_icon, icon, link, link_text 
+$card = wp_parse_args($args, array());
 ?>
 <article class="info-cards-item">
     <figure class="info-cards-item-icon">
-        <?php echo file_get_contents($card["icon"]); ?>
+        <?php if ($card["is_icon"]) : ?>
+            <?php echo file_get_contents($card["icon"]); ?>
+        <?php else : ?>
+            <img src="<?php echo $card["icon"] ?>" alt="<?php echo $card["title"] ?>">
+        <?php endif; ?>
     </figure>
     <main class="info-cards-item-content">
         <h3 class="info-cards-item-title">

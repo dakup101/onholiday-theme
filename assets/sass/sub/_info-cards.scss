@@ -1,10 +1,11 @@
-.info-cards{
+.info-cards {
     display: flex;
     gap: 2rem;
     margin: 2rem 0;
     flex-wrap: wrap;
     justify-content: center;
-    &-item{
+
+    &-item {
         flex-basis: calc(50% - 1rem);
         display: flex;
         align-items: center;
@@ -13,26 +14,32 @@
         padding: 1.25rem 1.5rem;
         box-shadow: $shadow;
         transition: all .2s ease-in-out;
-        &:hover{
+
+        &:hover {
             box-shadow: $shadow-lg;
         }
-        &-title{
+
+        &-title {
             font-size: $fs-title-sm;
         }
-        &-text{
+
+        &-text {
             margin: .5rem 0;
         }
-        &-link{
+
+        &-link {
             color: $color-accent;
             font-weight: 500;
             text-decoration: underline;
             transition: all .2s ease-in-out;
-            &:hover{
+
+            &:hover {
                 color: $color-accent-dark;
                 padding-left: .5rem;
             }
         }
-        &-icon{
+
+        &-icon {
             width: 130px;
             aspect-ratio: 1/1;
             display: flex;
@@ -44,15 +51,25 @@
             border-radius: .75rem;
             margin-right: 1.5rem;
             flex-shrink: 0;
-            & svg{
+            overflow: hidden;
+
+            & svg {
                 width: 50px;
                 height: auto;
                 color: inherit;
                 fill: currentColor;
+
                 & * {
                     fill: currentColor;
                     opacity: 1;
                 }
+            }
+
+            & img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
             }
         }
     }

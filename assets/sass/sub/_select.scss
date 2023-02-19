@@ -1,13 +1,16 @@
-.select{
+.select {
     display: block;
     position: relative;
     z-index: 20;
-    & select{
+
+    & select {
         display: none;
     }
-    &-value{
+
+    &-value {
         margin-left: .5em;
-        &-wrapper{
+
+        &-wrapper {
             display: flex;
             align-items: center;
             position: relative;
@@ -16,27 +19,33 @@
             height: 40px;
             cursor: pointer;
             transition: all .2s ease-in-out;
+
             & * {
                 pointer-events: none;
             }
-            & svg{
+
+            & svg {
                 width: 1em;
                 height: 1em;
                 fill: currentColor !important;
             }
-            &:hover{
+
+            &:hover {
                 color: $color-accent;
             }
-            &.collapse{
+
+            &.collapse {
                 color: $color-accent;
-                & .caret{
+
+                & .caret {
                     transform: rotate(180deg);
                 }
             }
         }
 
     }
-    &-options{
+
+    &-options {
         position: absolute;
         top: calc(100% + .25em);
         left: 0;
@@ -53,22 +62,29 @@
         box-shadow: $shadow-lg;
         border: 1px solid #f2f2f2;
         border-radius: .5em;
-        &-item{
+
+        &-item {
             padding: .35em 1em;
             border-bottom: 1px solid #f2f2f2;
             cursor: pointer;
             transition: all .2s ease-in-out;
-            &:hover{
+
+            &:hover {
                 background: #f2f2f2;
             }
+
+            &.checked {
+                color: red !important;
+            }
         }
-        &-selected{
+
+        &-selected {
             opacity: .5;
-            pointer-events: none;
             background: #f2f2f2;
             color: #333;
         }
-        &.show{
+
+        &.show {
             opacity: 1;
             transform: translateY(0);
             pointer-events: all;

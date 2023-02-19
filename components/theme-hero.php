@@ -1,5 +1,5 @@
 <?php
-$hero = wp_parse_args( $args, array(
+$hero = wp_parse_args($args, array(
     "is_slider" => false,
     "content" => array(
         array(
@@ -31,22 +31,21 @@ $hero = wp_parse_args( $args, array(
     )
 ));
 ?>
-
 <section class="hero <?php if ($hero["is_slider"]) echo "hero-slider" ?>">
-    <?php if ($hero["is_slider"]): ?>
-    <div class="hero-swiper">
-        <div class="swiper-wrapper">
-            <?php foreach($hero["content"] as $content) : ?>
-            <div class="swiper-slide">
-                <?php get_template_part( THEME_CMP, "hero-item", $content) ?>
+    <?php if ($hero["is_slider"]) : ?>
+        <div class="hero-swiper">
+            <div class="swiper-wrapper">
+                <?php foreach ($hero["content"] as $content) : ?>
+                    <div class="swiper-slide">
+                        <?php get_template_part(THEME_CMP, "hero-item", $content) ?>
+                    </div>
+                <?php endforeach; ?>
             </div>
-            <?php endforeach; ?>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
         </div>
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-    </div>
-    <?php else: ?>
-    <?php get_template_part( THEME_CMP, "hero-item", $hero["content"][0] ) ?>
+    <?php else : ?>
+        <?php get_template_part(THEME_CMP, "hero-item", $hero["content"][0]) ?>
     <?php endif; ?>
 </section>

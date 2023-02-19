@@ -1,8 +1,9 @@
 <?php
-function wp_get_menu_array($current_menu, $post_id): array {
+function wp_get_menu_array($current_menu, $post_id): array
+{
 	$menu_name = $current_menu; //menu slug
 	$locations = get_nav_menu_locations();
-	$menu_obj = wp_get_nav_menu_object( $locations[ $menu_name ] );
+	$menu_obj = wp_get_nav_menu_object($locations[$menu_name]);
 	$array_menu = wp_get_nav_menu_items($menu_obj);
 	$menu = array();
 	foreach ($array_menu as $m) {
@@ -13,7 +14,7 @@ function wp_get_menu_array($current_menu, $post_id): array {
 			$menu[$m->ID]['title'] = $m->title;
 			$menu[$m->ID]['url'] = $m->url;
 			$menu[$m->ID]['children'] = array();
-			
+
 			$is_megamenu = get_field('is_megamenu', $m);
 			$menu[$m->ID]['is_megamenu'] = $is_megamenu;
 		}
@@ -25,10 +26,11 @@ function wp_get_menu_array($current_menu, $post_id): array {
 			$submenu[$m->ID]['ID'] = $m->ID;
 			$submenu[$m->ID]['title'] = $m->title;
 			$submenu[$m->ID]['url'] = $m->url;
+			$submenu[$m->ID]['parent'] = $m->menu_item_parent;
 
 			$is_megamenu = get_field('is_megamenu', $m);
 			$submenu[$m->ID]['is_megamenu'] = $is_megamenu;
-			if ($is_megamenu){
+			if ($is_megamenu) {
 				$submenu[$m->ID]['desc'] = get_field("desc", $m);
 				$submenu[$m->ID]['bg_img'] = get_field("bg_img", $m);
 			}

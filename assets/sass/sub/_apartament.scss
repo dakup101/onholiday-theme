@@ -1,0 +1,183 @@
+.ido-apartament {
+    &-info {
+        margin: 3rem auto;
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 2rem
+    }
+}
+
+.ido-gallery {
+    margin-top: 3rem;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.swiper {
+    width: 100%;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.swiper-slide {
+    border-radius: .5rem;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+}
+
+.mySwiper2 {
+    height: 450px;
+    width: 100%;
+}
+
+.mySwiper {
+    height: 100px;
+    box-sizing: border-box;
+    padding: 10px 0;
+    margin-top: 10px;
+}
+
+.mySwiper .swiper-slide {
+    width: 25%;
+    height: 100px;
+    opacity: 0.4;
+    border-radius: .5rem;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.mySwiper .swiper-slide-thumb-active {
+    opacity: 1;
+}
+
+.swiper-slide figure {
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    & img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+}
+
+.ido-amenities {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+
+    &-wrapper {
+        padding: 1.5rem;
+        background: #f2f2f2;
+        border-radius: 1rem;
+        position: sticky;
+        top: calc(80px + 2rem);
+
+        & h2 {
+            margin-bottom: 1.5rem;
+        }
+    }
+
+}
+
+.ido-ament {
+    display: flex;
+    align-items: center;
+
+    img {
+        width: 25px;
+        margin-right: 1rem;
+    }
+}
+
+.apartwyp {
+    overflow: hidden;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.apartwyp h2 {
+    margin: .5rem 0;
+    width: calc(100% - 4px);
+    box-sizing: border-box;
+    border-radius: 1rem;
+    border: 1px solid #f2f2f2;
+    font-size: 18px;
+    padding: .5rem 1rem;
+    color: #333;
+    position: relative;
+    padding-right: 45px;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+.apartwyp h2:hover {
+    background: #f2f2f2;
+}
+
+.apartwyp h2.active:hover {
+    background: #fff;
+}
+
+.apartwyp h2::after {
+    content: '+';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    font-size: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.apartwyp h2.active {
+    border-color: $color-accent;
+    box-shadow: $shadow;
+
+    &+ul {
+        margin-top: 1rem;
+    }
+}
+
+.apartwyp ul {
+    margin: 0;
+    transition: all .3s ease-in-out;
+}

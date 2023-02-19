@@ -42,7 +42,7 @@ function ido_category_tax()
         'show_tagcloud'              => true,
         'rewrite'                    => $rewrite,
     );
-    register_taxonomy('ido_category', array('ido-apartament'), $args);
+    register_taxonomy('ido_category', array('ido-apartaments'), $args);
 }
 // Register ido_apartaments
 function post_type_ido_apartaments()

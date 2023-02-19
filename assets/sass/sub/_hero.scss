@@ -1,6 +1,7 @@
-.hero{
+.hero {
     color: white;
-    &-inner{
+
+    &-inner {
         position: relative;
         min-height: 380px;
         padding: 5rem 0;
@@ -10,41 +11,57 @@
         align-items: center;
         justify-content: center;
     }
-    &-wrapper{
+
+    &-wrapper {
         position: relative;
+        width: 100%;
     }
-    &-title{
+
+    &-title {
         font-size: $fs-title-lg;
         text-align: center;
         text-shadow: $shadow;
-        & span{
+
+        & span {
             color: $color-accent;
         }
     }
-    &-content{
+
+    &-content {
         font-size: $fs-text-lg;
         margin: 2rem auto;
         max-width: 650px;
         text-align: center;
         text-shadow: $shadow;
+
+        & p {
+            margin-bottom: 1em;
+        }
     }
-    &-btns{
+
+    &-btns {
         display: flex;
-        & a + button, & a + a, & button + a, & button + button{
+
+        & a+button,
+        & a+a,
+        & button+a,
+        & button+button {
             margin-left: 2rem;
         }
     }
-    &-overlay{
+
+    &-overlay {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, .35);
+        background: rgba(0, 0, 0, .4);
         z-index: 5;
         pointer-events: none;
     }
-    &-bg{
+
+    &-bg {
         position: absolute;
         top: 0;
         left: 0;
@@ -52,38 +69,48 @@
         height: 100%;
         overflow: hidden;
         pointer-events: none;
-        &-img, &-video{
+
+        &-img,
+        &-video {
             object-fit: cover;
-            object-position: top;
+            object-position: center;
             position: relative;
             width: 100%;
             height: 100%;
         }
     }
-    &-slider{
+
+    &-slider {
         position: relative;
-        & .swiper{
-            &-button{
-                &-next, &-prev{
+
+        & .swiper {
+            &-button {
+
+                &-next,
+                &-prev {
                     color: #fff;
                 }
-                &-disabled{
+
+                &-disabled {
                     opacity: .6 !important;
                 }
             }
-            &-pagination{
-                &-bullet{
+
+            &-pagination {
+                &-bullet {
                     background: #fff;
                     opacity: .6;
-                    &-active{
+
+                    &-active {
                         opacity: 1;
                     }
                 }
             }
         }
     }
-    &.cta .hero{
-        &-content{
+
+    &.cta .hero {
+        &-content {
             font-size: $fs-text;
             max-width: 991px;
         }

@@ -5,7 +5,7 @@
 <section class="gallery-intro">
     <div class="container">
         <?php get_template_part(THEME_CMP_CMN, "text-title", array(
-            "title" => get_the_title(473),
+            "title" => get_the_title(),
             "subtitle" => "Bądź w temacie",
             "alignment" => "center",
             "tag" => "h1"
@@ -16,7 +16,7 @@
 <section>
     <div class="container blog-archive">
         <?php while (have_posts()) : the_post(); ?>
-        <?php get_template_part(THEME_CMP, "blog-grid-item") ?>
+            <?php get_template_part(THEME_CMP, "blog-grid-item") ?>
 
         <?php endwhile; ?>
     </div>

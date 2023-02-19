@@ -1,12 +1,12 @@
-<?php // Template Name: Blog
+<?php // Template Name: Sam Tekst
 ?>
 
 <?php get_header(); ?>
 <section class="gallery-intro">
     <div class="container">
         <?php get_template_part(THEME_CMP_CMN, "text-title", array(
-            "title" => get_the_title(473),
-            "subtitle" => "Bądź w temacie",
+            "title" => get_the_title(),
+            "subtitle" => get_field("subtitle"),
             "alignment" => "center",
             "tag" => "h1"
         )) ?>
@@ -14,11 +14,8 @@
 </section>
 
 <section>
-    <div class="container blog-archive">
-        <?php while (have_posts()) : the_post(); ?>
-        <?php get_template_part(THEME_CMP, "blog-grid-item") ?>
-
-        <?php endwhile; ?>
+    <div class="container text">
+        <?php echo get_field("the_text"); ?>
     </div>
 </section>
 <?php get_footer(); ?>

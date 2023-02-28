@@ -9,6 +9,12 @@
 
     &-value {
         margin-left: .5em;
+        & input{
+            font-size: inherit;
+            width: 100%;
+            border: none;
+            outline: none;
+        }
 
         &-wrapper {
             display: flex;
@@ -74,7 +80,7 @@
             }
 
             &.checked {
-                color: red !important;
+                color: $color-accent !important;
             }
         }
 

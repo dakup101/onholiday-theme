@@ -66,6 +66,25 @@ class IdoBooking_API extends IdoBooking
         return $this->send_request($address, json_encode($request))->objectMedia;
     }
 
+    public function get_aviability($arrival, $departure, $persons)
+    {
+        $address = 'https://client' . $this->client->systemClient . '.idosell.com/api/public/availability/24/soap';
+        $wsdl = $address . '/wsdl';
+        $binding = array();
+        $binding['location'] = $address;
+        $binding['trace'] = true;
+        $client = new SoapClient($wsdl, $binding);
+
+        $request = array();
+        $request['availability'] = array();
+        $request['availability']['arrival'] = $arrival;
+        $request['availability']['departure'] = $departure;
+        $request['availability']['persons'] = $persons;
+
+        $response = $client->__soapCall('availability', $request);
+        return $response;
+    }
+
     private function send_request($address, $request)
     {
         $headers = array(

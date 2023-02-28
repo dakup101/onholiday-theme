@@ -153,3 +153,12 @@ a {
         margin-bottom: 5rem;
     }
 }
+
+.flatpickr-day.selected, .flatpickr-day.startRange, .flatpickr-day.endRange{
+    background: $color-accent !important;
+    border-color: $color-accent !important;
+}
+
+.hidden{
+    display: none;
+}

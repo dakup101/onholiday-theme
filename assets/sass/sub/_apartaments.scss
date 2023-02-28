@@ -4,13 +4,21 @@
         display: grid;
         grid-template-columns: 1fr 2.5fr;
         gap: 3rem;
-
     }
-
+    &-stats{
+        &-item{
+            margin-bottom: .5em;
+            & strong{
+                text-decoration: underline;
+            }
+        }
+    }
     &-list {
         display: grid;
         grid-template-columns: 1fr;
         gap: 2rem;
+        align-items: start;
+        align-self: start;
     }
 
     &-item {

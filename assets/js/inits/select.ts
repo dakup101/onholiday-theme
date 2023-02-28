@@ -59,7 +59,6 @@ export default function themeSelectInit() {
 			htmlItem.addEventListener("click", (ev) => {
 				ev.preventDefault();
 				input.options[i].selected = true;
-				input.dispatchEvent(new Event("change"));
 				if (multiple){
 					let curMultiple = (multiple as HTMLInputElement).value;
 					let curValues = curMultiple.split(",").filter(el => el);
@@ -83,6 +82,8 @@ export default function themeSelectInit() {
 						selected.innerHTML = selected.getAttribute("data-name");
 						select.setAttribute("data-value", "");
 					}
+					select.querySelector(".multiple-value").dispatchEvent(new Event("change"));
+
 				}
 				else{
 					selectInner.classList.remove("collapse");
@@ -94,7 +95,7 @@ export default function themeSelectInit() {
 						.classList.remove("select-options-selected");
 					htmlItem.classList.add("select-options-selected");
 				}
-
+				input.dispatchEvent(new Event("change"));
 			});
 			optionsHTML.appendChild(htmlItem);
 		});

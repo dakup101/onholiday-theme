@@ -1,4 +1,5 @@
-<article class="apartaments-item">
+<?php $terms = get_the_terms(get_the_ID(), 'ido_loc'); ?>
+<article class="apartaments-item" data-loc="<?= $terms[0]->term_id ?>">
     <figure class="apartaments-item-img">
         <img src="<?php echo get_field("media")[0]["url"] ?>" alt="<?php echo get_the_title()  ?>" loading="lazy">
     </figure>

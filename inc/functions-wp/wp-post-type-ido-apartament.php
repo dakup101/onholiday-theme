@@ -44,6 +44,88 @@ function ido_category_tax()
     );
     register_taxonomy('ido_category', array('ido-apartaments'), $args);
 }
+
+
+// Register Custom Taxonomy
+function ido_amens_tax()
+{
+
+    $labels = array(
+        'name'                       => _x('Udogodnienia', 'Taxonomy General Name', 'text_domain'),
+        'singular_name'              => _x('Udogodnienie', 'Taxonomy Singular Name', 'text_domain'),
+        'menu_name'                  => __('Udogodnienia', 'text_domain'),
+        'all_items'                  => __('All Items', 'text_domain'),
+        'parent_item'                => __('Parent Item', 'text_domain'),
+        'parent_item_colon'          => __('Parent Item:', 'text_domain'),
+        'new_item_name'              => __('New Item Name', 'text_domain'),
+        'add_new_item'               => __('Add New Item', 'text_domain'),
+        'edit_item'                  => __('Edit Item', 'text_domain'),
+        'update_item'                => __('Update Item', 'text_domain'),
+        'view_item'                  => __('View Item', 'text_domain'),
+        'separate_items_with_commas' => __('Separate items with commas', 'text_domain'),
+        'add_or_remove_items'        => __('Add or remove items', 'text_domain'),
+        'choose_from_most_used'      => __('Choose from the most used', 'text_domain'),
+        'popular_items'              => __('Popular Items', 'text_domain'),
+        'search_items'               => __('Search Items', 'text_domain'),
+        'not_found'                  => __('Not Found', 'text_domain'),
+        'no_terms'                   => __('No items', 'text_domain'),
+        'items_list'                 => __('Items list', 'text_domain'),
+        'items_list_navigation'      => __('Items list navigation', 'text_domain'),
+    );
+    $args = array(
+        'labels'                     => $labels,
+        'hierarchical'               => false,
+        'public'                     => true,
+        'show_ui'                    => true,
+        'show_admin_column'          => true,
+        'show_in_nav_menus'          => true,
+        'show_tagcloud'              => true,
+    );
+    register_taxonomy('ido_amen', array('ido-apartament'), $args);
+}
+
+add_action('init', 'ido_category_tax', 0);
+
+// Register Custom Taxonomy
+function ido_loc_tax()
+{
+
+    $labels = array(
+        'name'                       => _x('Dzielnicy', 'Taxonomy General Name', 'text_domain'),
+        'singular_name'              => _x('Dzielnica', 'Taxonomy Singular Name', 'text_domain'),
+        'menu_name'                  => __('Dzielnicy', 'text_domain'),
+        'all_items'                  => __('All Items', 'text_domain'),
+        'parent_item'                => __('Parent Item', 'text_domain'),
+        'parent_item_colon'          => __('Parent Item:', 'text_domain'),
+        'new_item_name'              => __('New Item Name', 'text_domain'),
+        'add_new_item'               => __('Add New Item', 'text_domain'),
+        'edit_item'                  => __('Edit Item', 'text_domain'),
+        'update_item'                => __('Update Item', 'text_domain'),
+        'view_item'                  => __('View Item', 'text_domain'),
+        'separate_items_with_commas' => __('Separate items with commas', 'text_domain'),
+        'add_or_remove_items'        => __('Add or remove items', 'text_domain'),
+        'choose_from_most_used'      => __('Choose from the most used', 'text_domain'),
+        'popular_items'              => __('Popular Items', 'text_domain'),
+        'search_items'               => __('Search Items', 'text_domain'),
+        'not_found'                  => __('Not Found', 'text_domain'),
+        'no_terms'                   => __('No items', 'text_domain'),
+        'items_list'                 => __('Items list', 'text_domain'),
+        'items_list_navigation'      => __('Items list navigation', 'text_domain'),
+    );
+    $args = array(
+        'labels'                     => $labels,
+        'hierarchical'               => true,
+        'public'                     => true,
+        'show_ui'                    => true,
+        'show_admin_column'          => true,
+        'show_in_nav_menus'          => true,
+        'show_tagcloud'              => true,
+    );
+    register_taxonomy('ido_loc', array('ido-apartament'), $args);
+}
+
+add_action('init', 'ido_loc_tax', 0);
+
 // Register ido_apartaments
 function post_type_ido_apartaments()
 {
@@ -88,7 +170,7 @@ function post_type_ido_apartaments()
         'description'           => __('Apartamenty pobrane z IdoBooking', 'text_domain'),
         'labels'                => $labels,
         'supports'              => array('title', 'thumbnail', 'revisions', 'custom-fields', 'page-attributes'),
-        'taxonomies'            => array('ido_category', 'ido_amen'),
+        'taxonomies'            => array('ido_category', 'ido_amen', 'ido_loc'),
         'hierarchical'          => false,
         'public'                => true,
         'show_ui'               => true,
@@ -106,43 +188,3 @@ function post_type_ido_apartaments()
     register_post_type('ido-apartaments', $args);
 }
 add_action('init', 'post_type_ido_apartaments', 0);
-
-// Register Custom Taxonomy
-function ido_amens_tax()
-{
-
-    $labels = array(
-        'name'                       => _x('Udogodnienia', 'Taxonomy General Name', 'text_domain'),
-        'singular_name'              => _x('Udogodnienie', 'Taxonomy Singular Name', 'text_domain'),
-        'menu_name'                  => __('Udogodnienia', 'text_domain'),
-        'all_items'                  => __('All Items', 'text_domain'),
-        'parent_item'                => __('Parent Item', 'text_domain'),
-        'parent_item_colon'          => __('Parent Item:', 'text_domain'),
-        'new_item_name'              => __('New Item Name', 'text_domain'),
-        'add_new_item'               => __('Add New Item', 'text_domain'),
-        'edit_item'                  => __('Edit Item', 'text_domain'),
-        'update_item'                => __('Update Item', 'text_domain'),
-        'view_item'                  => __('View Item', 'text_domain'),
-        'separate_items_with_commas' => __('Separate items with commas', 'text_domain'),
-        'add_or_remove_items'        => __('Add or remove items', 'text_domain'),
-        'choose_from_most_used'      => __('Choose from the most used', 'text_domain'),
-        'popular_items'              => __('Popular Items', 'text_domain'),
-        'search_items'               => __('Search Items', 'text_domain'),
-        'not_found'                  => __('Not Found', 'text_domain'),
-        'no_terms'                   => __('No items', 'text_domain'),
-        'items_list'                 => __('Items list', 'text_domain'),
-        'items_list_navigation'      => __('Items list navigation', 'text_domain'),
-    );
-    $args = array(
-        'labels'                     => $labels,
-        'hierarchical'               => false,
-        'public'                     => true,
-        'show_ui'                    => true,
-        'show_admin_column'          => true,
-        'show_in_nav_menus'          => true,
-        'show_tagcloud'              => true,
-    );
-    register_taxonomy('ido_amen', array('ido-apartament'), $args);
-}
-
-add_action('init', 'ido_category_tax', 0);

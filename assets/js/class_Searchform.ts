@@ -106,6 +106,7 @@ export default class searchForm{
             wrap: true,
             enableTime: false,
             dateFormat: "Y-m-d",
+            showMonths: 2,
             onChange: function(selectedDates, dateStr, instance){
                 if (selectedDates[0] && selectedDates[1]){
                     let from = flatpickr.formatDate(selectedDates[0], "Y-m-d");

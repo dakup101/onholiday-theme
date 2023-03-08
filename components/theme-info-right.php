@@ -20,12 +20,14 @@
             <div class="info-section-text">
                 <?php echo $info["text"] ?>
             </div>
-            <?php get_template_part( THEME_CMP_CMN, "btn", array(
+            <?php if ($info["btn_link"]) : ?>
+            <?php get_template_part(THEME_CMP_CMN, "btn", array(
                     "link" => $info["btn_link"],
                     "text" => $info["btn_text"],
                     "class" => "btn-content",
                     "type" => "alt-dark",
-            ) ) ?>
+                )) ?>
+            <?php endif; ?>
         </main>
     </article>
 </section>

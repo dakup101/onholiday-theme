@@ -1,0 +1,14 @@
+.summary{
+    &-wrapper{
+        margin: 3rem auto;
+    }
+    &-desc{
+        margin-bottom: 1.5rem;
+    }
+    summary{
+        margin-bottom: 1.5rem;
+        cursor: pointer;
+        text-decoration: underline;
+        color: $color-accent;
+    }
+}

@@ -35,6 +35,9 @@ a {
 @import "./sub/apartaments";
 @import "./sub/apartament";
 
+@import "./sub/administration";
+@import "./sub/summary";
+
 .gallery {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;

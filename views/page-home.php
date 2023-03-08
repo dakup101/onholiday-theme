@@ -24,7 +24,7 @@ get_template_part(THEME_CMP, "search-form");
         <?php $i = array("", "", "", "", "");
         foreach ($i as $el) : ?>
             <article class="apartament-list-item">
-                <a href="#" class="apartament-list-item-inner">
+                <a href="/apartamenty/" class="apartament-list-item-inner">
                     <div class="apartament-list-item-name">
                         Apartamenty z basenem
                     </div>
@@ -40,7 +40,7 @@ get_template_part(THEME_CMP, "search-form");
         <?php endforeach; ?>
     </div>
     <?php get_template_part(THEME_CMP_CMN, "btn", array(
-        "link" => null,
+        "link" => "/apartamenty/",
         "text" => "Apartamenty w Kołobrzegu",
         "class" => "search-form-action btn-content",
         "type" => "accent",

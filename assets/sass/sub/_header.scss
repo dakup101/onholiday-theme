@@ -7,13 +7,14 @@
     background: #fff;
     transition: all .2s ease-in-out;
 
-    @media(max-width: 991px){
-        display: none;
-    }
+
 
     &.sticky {
         top: 0;
         position: sticky;
+        @media(max-width: 991px){
+            position: relative;
+        }
     }
 
     // Header Logo
@@ -41,6 +42,9 @@
 
     // Header Nav
     &-nav {
+        @media(max-width: 991px){
+            display: none;
+        }
         &-language {
             margin-left: 2rem;
             width: fit-content;

@@ -4,6 +4,9 @@
         display: grid;
         grid-template-columns: 1fr 2.5fr;
         gap: 3rem;
+        @media(max-width: 991px){
+            grid-template-columns: 1fr;
+        }
     }
     &-stats{
         &-item{
@@ -61,7 +64,7 @@
         }
 
         &-img {
-            width: 325px;
+            width: 150px;
             overflow: hidden;
             flex-shrink: 0;
 
@@ -99,6 +102,9 @@
             &.articles {
                 position: sticky;
                 top: calc(80px + 2rem);
+                @media(max-width: 991px){
+                    display: none;
+                }
             }
 
             &:last-child {

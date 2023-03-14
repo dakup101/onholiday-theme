@@ -7,6 +7,9 @@
         display: grid;
         gap: 1rem;
         grid-template-columns: 1fr 1.25fr .75fr 1.25fr .75fr;
+        @media(max-width: 991px){
+            grid-template-columns: 1fr;
+        }
     }
     & .select{
         &-value{

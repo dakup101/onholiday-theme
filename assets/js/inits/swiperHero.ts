@@ -10,6 +10,7 @@ export default function swiperHero() {
 		modules: [Navigation, Pagination, Autoplay, EffectFade],
 		preloadImages: false,
 		lazy: true,
+		autoHeight: true,
 		effect: "fade",
 		fadeEffect: {
 			crossFade: true,

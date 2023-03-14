@@ -13,6 +13,14 @@
         gap: 2rem;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         margin-bottom: 2rem;
+
+        @media(max-width: 1240px){
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @media(max-width: 680px){
+            grid-template-columns: 1fr;
+        }
     }
     &-item{
         background: #fff;

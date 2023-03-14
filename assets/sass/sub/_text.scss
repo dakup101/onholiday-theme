@@ -2,15 +2,26 @@
     &-title{
         display: flex;
         flex-direction: column-reverse;
-        font-size: $fs-title-sm;
+        font-size: $fs-title;
         margin-bottom: 1.25rem;
         & strong{
-            font-size: $fs-text;
+            font-size: $fs-text-lg;
             text-transform: uppercase;
             letter-spacing: 1px;
             color: $color-accent;
             font-weight: 400;
             margin-bottom: .25em;
+        }
+
+        & * {
+            font-size: inherit;
+        }
+
+        @media(max-width: 991px){
+            font-size: $mobile-fs-title;
+            & strong{
+                font-size: $mobile-fs-text-lg;
+            }
         }
     }
     &-center{

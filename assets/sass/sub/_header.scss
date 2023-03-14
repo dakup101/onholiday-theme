@@ -7,6 +7,10 @@
     background: #fff;
     transition: all .2s ease-in-out;
 
+    @media(max-width: 991px){
+        display: none;
+    }
+
     &.sticky {
         top: 0;
         position: sticky;
@@ -55,6 +59,9 @@
             display: grid;
             grid-auto-flow: column;
             gap: 2rem;
+            @media(max-width: 1500px){
+                gap: 1.25rem;
+            }
         }
 
         &-subitem {

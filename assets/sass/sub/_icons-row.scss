@@ -5,8 +5,12 @@
     &-wrapper{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 2rem;
         align-items: center;
         justify-items: center;
+        @media(max-width: 1240px){
+            grid-template-columns: 1fr 1fr;
+        }
     }
     &-item{
         display: flex;
@@ -18,12 +22,20 @@
             & svg{
                 width: 65px;
                 height: auto;
+
+                @media(max-width: 991px){
+                    width: 45px;
+                }
             }
         }
         &-text{
             font-size: $fs-text-lg;
             font-weight: bold;
             text-align: center;
+
+            @media(max-width: 991px){
+                font-size: $mobile-fs-text-lg;
+            }
         }
     }
 }

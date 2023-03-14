@@ -3,7 +3,10 @@
         margin: 3rem auto;
         display: grid;
         grid-template-columns: 1fr 1.5fr;
-        gap: 2rem
+        gap: 2rem;
+        @media(max-width: 991px){
+            grid-template-columns: 1fr;
+        }
     }
 }
 

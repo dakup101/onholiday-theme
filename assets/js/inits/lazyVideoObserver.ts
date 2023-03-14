@@ -21,6 +21,8 @@ export default function lazyVideoObserver() {
 				}
 
 				(video.target as HTMLVideoElement).load();
+				(video.target as HTMLVideoElement).play();
+
 				video.target.classList.remove("lazy");
 				lazyVideoObserver.unobserve(video.target);
 			}

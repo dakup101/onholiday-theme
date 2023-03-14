@@ -16,6 +16,18 @@ export default function apartamentGallery(){
 			nextEl: ".swiper-button-next",
 			prevEl: ".swiper-button-prev",
 		},
+
+		breakpoints: {
+			320: {
+				slidesPerView: 4,
+			},
+			768: {
+				slidesPerView: 6,
+			},
+			1240: {
+				slidesPerView: 8
+			}
+		}
 	});
 	let swiper2 = new Swiper(".mySwiper2", {
         modules: [Navigation, Autoplay, Thumbs],

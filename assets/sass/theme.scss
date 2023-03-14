@@ -46,7 +46,13 @@ a {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     align-items: flex-start;
     gap: 2rem;
-
+    @media(max-width: 1240px){
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    @media(max-width: 991px){
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
     &-intro {
         margin: 3.5rem 0;
 
@@ -87,6 +93,10 @@ a {
     grid-template-columns: 1fr 1fr;
 
     gap: 2rem;
+
+    @media(max-width: 991px){
+        grid-template-columns: 1fr;
+    }
 
     &-title {
         padding: 1rem 2rem;
@@ -157,6 +167,15 @@ a {
         grid-template-columns: 1fr 1fr 1fr 1fr;
         gap: 2rem;
         margin-bottom: 5rem;
+        @media(max-width: 1240px){
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+        @media(max-width: 991px){
+            grid-template-columns: 1fr 1fr;
+        }
+        @media(max-width: 768px){
+            grid-template-columns: 1fr;
+        }
     }
 }
 
@@ -189,6 +208,9 @@ a {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
+    @media(max-width: 991px){
+        grid-template-columns: 1fr;
+    }
 }
 .contact-form{
     input:not([type="submit"], [type="checkbox"]), textarea{
@@ -219,6 +241,9 @@ a {
     background: #333;
     color: white;
     padding: 1.5rem 0;
+    @media(max-width: 991px){
+        padding-bottom: calc(1.5rem + 90px);
+    }
     &-links{
         @media(max-width: 991px){
             text-align: center;
@@ -386,10 +411,24 @@ a {
             &.active{
                 background: $color-accent;
                 color: #fff;
+                border-radius: .5rem;
                 & .caret{
                     transform: rotate(180deg);
                 }
             }
         }
     }
+}
+
+@media(max-width: 768px){
+
+.flatpickr-calendar{
+    left: 50% !important;
+    transform: translateX(-50%);
+}
+}
+
+.goverlay{
+    opacity: .7;
+    backdrop-filter: blur(8px);
 }

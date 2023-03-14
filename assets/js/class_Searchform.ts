@@ -100,22 +100,43 @@ export default class searchForm{
     }
     datePicker(){
         let dateInput = this.inputs.dates as HTMLInputElement;
-        flatpickr('.search-date', {
-            locale: "pl",
-            mode: "range",
-            wrap: true,
-            enableTime: false,
-            dateFormat: "Y-m-d",
-            showMonths: 2,
-            onChange: function(selectedDates, dateStr, instance){
-                if (selectedDates[0] && selectedDates[1]){
-                    let from = flatpickr.formatDate(selectedDates[0], "Y-m-d");
-                    let to = flatpickr.formatDate(selectedDates[1], "Y-m-d");
-                    dateInput.value = from + "," + to;
-                    dateInput.dispatchEvent(new Event("change"));
-                }
-            },
-          });
+        if (window.screen.width < 768){
+            flatpickr('.search-date', {
+                locale: "pl",
+                mode: "range",
+                wrap: true,
+                enableTime: false,
+                dateFormat: "Y-m-d",
+                showMonths: 1,
+                onChange: function(selectedDates, dateStr, instance){
+                    if (selectedDates[0] && selectedDates[1]){
+                        let from = flatpickr.formatDate(selectedDates[0], "Y-m-d");
+                        let to = flatpickr.formatDate(selectedDates[1], "Y-m-d");
+                        dateInput.value = from + "," + to;
+                        dateInput.dispatchEvent(new Event("change"));
+                    }
+                },
+              });
+        }
+        else{
+            flatpickr('.search-date', {
+                locale: "pl",
+                mode: "range",
+                wrap: true,
+                enableTime: false,
+                dateFormat: "Y-m-d",
+                showMonths: 2,
+                onChange: function(selectedDates, dateStr, instance){
+                    if (selectedDates[0] && selectedDates[1]){
+                        let from = flatpickr.formatDate(selectedDates[0], "Y-m-d");
+                        let to = flatpickr.formatDate(selectedDates[1], "Y-m-d");
+                        dateInput.value = from + "," + to;
+                        dateInput.dispatchEvent(new Event("change"));
+                    }
+                },
+              });
+        }
+
         console.log("--- Form: date picker inited")
     }
     updateSearchValue(){

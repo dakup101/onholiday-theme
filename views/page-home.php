@@ -21,30 +21,54 @@ get_template_part(THEME_CMP, "search-form");
     <p class="text-center">Proponujemy Wam kilkanaście prestiżowych<br>apartamentów w najlepszych lokalizacjach w
         Kołobrzegu.</p>
     <div class="apartament-list addons">
-        <?php $i = array("", "", "", "", "");
-        foreach ($i as $el) : ?>
-            <article class="apartament-list-item">
-                <a href="/apartamenty/" class="apartament-list-item-inner">
-                    <div class="apartament-list-item-name">
-                        Apartamenty z basenem
-                    </div>
-                    <span href="#" class="apartament-list-item-link">
-                        Dowiedz się więcej
-                    </span>
-                </a>
-                <figure class="apartament-list-item-bg">
-                    <img src="<?php echo THEME_IMG . "default-apartament.jpg" ?>" alt="">
-                    <div class="overlay"></div>
-                </figure>
-            </article>
-        <?php endforeach; ?>
+        <?php $kolobrzeg_items = new WP_Query(array(
+            "post_type" => "ido-apartaments",
+            "status" => "publish",
+            "orderby" => "rand",
+            "posts_per_page" => 5,
+            "tax_query" => array(
+                "relation" => "AND",
+                "operator" => "IN",
+                array(
+                    'taxonomy' => 'ido_category',
+                    'field' => 'slug',
+                    'terms' =>  "kolobrzeg",
+                )
+            )
+        ));
+
+        if ($kolobrzeg_items->have_posts()) :
+
+            while ($kolobrzeg_items->have_posts()) : $kolobrzeg_items->the_post(); ?>
+                <article class="apartament-list-item">
+                    <a href="<?php echo get_the_permalink() ?>" class="apartament-list-item-inner">
+                        <div class="apartament-list-item-name">
+                            <?php echo get_the_title() ?>
+                        </div>
+                        <span class="apartament-list-item-link">
+                            Sprawdź szczegóły
+                        </span>
+                    </a>
+                    <figure class="apartament-list-item-bg">
+                        <img src="<?php echo get_field("media")[0]["url"] ?>" alt="<?php echo get_the_title()  ?>" loading="lazy">
+                        <div class="overlay"></div>
+
+                    </figure>
+                </article>
+            <?php endwhile;
+            wp_reset_query(); ?>
+
+        <?php endif; ?>
     </div>
-    <?php get_template_part(THEME_CMP_CMN, "btn", array(
-        "link" => "/apartamenty/",
-        "text" => "Apartamenty w Kołobrzegu",
-        "class" => "search-form-action btn-content",
-        "type" => "accent",
-    )) ?>
+    <form action="/apartamenty/" method="POST">
+        <input type="hidden" name="searchLocation" value="kolobrzeg">
+        <?php get_template_part(THEME_CMP_CMN, "btn", array(
+            "link" => null,
+            "text" => "Apartamenty w Kołobrzegu",
+            "class" => "search-form-action btn-content",
+            "type" => "accent",
+        )) ?>
+    </form>
     <?php get_template_part(THEME_CMP, "info-cards", get_field("cards")) ?>
 </section>
 <?php get_template_part(THEME_CMP, "icons-row") ?>

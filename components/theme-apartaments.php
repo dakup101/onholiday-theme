@@ -1,4 +1,7 @@
 <?php
+// Reset search values
+session_unset();
+
 $args = array(
     "post_type" => "ido-apartaments",
     "status" => "publish",
@@ -27,7 +30,10 @@ $guests = null;
 $addons = null;
 $location = null;
 
-if ($has_guests) $guests = $_POST["searchGuests"];
+if ($has_guests) {
+    $guests = $_POST["searchGuests"];
+    $_SESSION["guests"] = $guests;
+}
 if ($has_location) {
     $location = $_POST["searchLocation"];
     $args["tax_query"][] = array(
@@ -51,6 +57,10 @@ if ($has_addons) {
 if ($has_date) {
     $dates = explode(",", $_POST["searchDates"]);
     $guests = $_POST["searchGuests"];
+
+    $_SESSION["searchDates"] = $dates;
+    $_SESSION["searchGuest"] = $guests;
+
     $ido_avi = $ido->get_aviability($dates[0], $dates[1], $guests)->offers;
     if (!empty($ido_avi)) {
         foreach ($ido_avi as $item) {
@@ -75,8 +85,8 @@ $shown_result = false;
             <?php get_template_part(THEME_CMP, "apartaments-filters") ?>
         </aside>
         <?php if ($apartaments->have_posts()) : ?>
-        <div class="apartaments-list">
-            <?php
+            <div class="apartaments-list">
+                <?php
                 while ($apartaments->have_posts()) {
                     $apartaments->the_post();
                     if (!empty($date_filtered_offers)) {
@@ -91,14 +101,14 @@ $shown_result = false;
                 }
                 wp_reset_query();
                 ?>
-        </div>
+            </div>
         <?php else : $shown_result = false; ?>
         <?php endif; ?>
         <?php if (!$shown_result) : ?>
-        <div class="apartaments-no-items">
-            <strong>Brak dostępnych apartamentów</strong>
-            <span>Spróbuj wybrać inną datę / udogodnienia</span>
-        </div>
+            <div class="apartaments-no-items">
+                <strong>Brak dostępnych apartamentów</strong>
+                <span>Spróbuj wybrać inną datę / udogodnienia</span>
+            </div>
         <?php endif; ?>
     </div>
 </section>

@@ -107,6 +107,8 @@ export default class searchForm{
     }
     datePicker(){
         let dateInput = this.inputs.dates as HTMLInputElement;
+        let today = new Date();
+        let tomorrow = new Date(today.getTime() + 24 * 60 * 60 * 1000);
         if (window.screen.width < 768){
             flatpickr('.search-date', {
                 locale: "pl",
@@ -114,6 +116,7 @@ export default class searchForm{
                 wrap: true,
                 enableTime: false,
                 dateFormat: "Y-m-d",
+                minDate: tomorrow,
                 showMonths: 1,
                 onChange: function(selectedDates, dateStr, instance){
                     if (selectedDates[0] && selectedDates[1]){
@@ -126,12 +129,14 @@ export default class searchForm{
               });
         }
         else{
+
             flatpickr('.search-date', {
                 locale: "pl",
                 mode: "range",
                 wrap: true,
                 enableTime: false,
                 dateFormat: "Y-m-d",
+                minDate: tomorrow,
                 showMonths: 2,
                 onChange: function(selectedDates, dateStr, instance){
                     if (selectedDates[0] && selectedDates[1]){

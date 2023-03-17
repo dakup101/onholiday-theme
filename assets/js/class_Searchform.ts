@@ -4,6 +4,7 @@ import "flatpickr/dist/l10n/pl.js";
 
 export default class searchForm{
     form;
+    submit;
     inputs = {
         location: null,
         dates: null,
@@ -24,10 +25,13 @@ export default class searchForm{
     }
     constructor(selector){
         this.form = document.querySelector(selector);
+        if (!this.form) return;
         this.inputs.location = this.form.querySelector("#location")
         this.inputs.guests = this.form.querySelector("#people")
         this.inputs.dates = this.form.querySelector("#dates")
         this.inputs.addons = this.form.querySelector("#multiple-addons")
+
+        this.submit = this.form.querySelector(".search-form-action");
 
         this.searchInputs.location = this.form.querySelector("#searchLocation")
         this.searchInputs.guests = this.form.querySelector("#searchGuests")
@@ -38,6 +42,8 @@ export default class searchForm{
         this.populate();
         this.onChange();
         this.updateSearchValue();
+
+        this.validate();
     }
     populate(){
         for (const [key, input] of Object.entries(this.inputs)){
@@ -94,6 +100,7 @@ export default class searchForm{
                 }
                 console.log("--- Form: change at " + key)
                 this.updateSearchValue();
+                this.validate();
             })
         }
         console.log("--- Form: change events handeled")
@@ -145,5 +152,17 @@ export default class searchForm{
         (this.searchInputs.dates as HTMLInputElement).value = this.values.dates;
         (this.searchInputs.addons as HTMLInputElement).value = this.values.addons;
         console.log(this.values);
+    }
+    validate(){
+        this.submit.classList.remove("disabled");
+        console.log(this.values.guests);
+        if 
+        (
+            this.values.dates.length < 1 || 
+            this.values.guests.length < 1 || 
+            this.values.location.length < 1
+        ){
+            this.submit.classList.add("disabled");
+        }
     }
 }

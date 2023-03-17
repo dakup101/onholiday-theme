@@ -6,7 +6,7 @@
         width: 100%;
         display: grid;
         gap: 1rem;
-        grid-template-columns: 1fr 1.25fr .75fr 1.25fr .75fr;
+        grid-template-columns: 1.25fr 1.25fr .75fr 1.25fr .75fr;
         @media(max-width: 991px){
             grid-template-columns: 1fr;
         }
@@ -27,5 +27,8 @@
                 }
             }
         }
+    }
+    & > .container{
+        max-width: 1440px;
     }
 }

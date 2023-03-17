@@ -6,7 +6,8 @@
             echo get_template_part(THEME_CMP_CMN, "select", array(
                 "name" => "location",
                 "id" => "location",
-                "visibleName" => "Miejsce Pobytu",
+                "visibleName" => "Miasto",
+                "startName" => "Wybierz Miasto",
                 "with_icon" => true,
                 "icon" => file_get_contents(THEME_IMG . '/icon/geo-icon.svg'),
                 "options" => array(
@@ -46,6 +47,8 @@
                 "name" => "people",
                 "id" => "people",
                 "visibleName" => "Gości",
+                "startName" => "Ilość gości",
+
                 "with_icon" => true,
                 "icon" => file_get_contents(THEME_IMG . '/icon/people-icon.svg'),
                 "options" => array(
@@ -54,6 +57,7 @@
                     "3" => "3",
                     "4" => "4",
                     "5" => "5",
+                    "6" => "6"
                 ),
                 "class" => "select-people",
             ));
@@ -75,6 +79,8 @@
                 "name" => "addons",
                 "id" => "addons",
                 "visibleName" => "Udogodnienia",
+                "startName" => "Wybierz Udogonienia",
+
                 "multiple" => true,
                 "with_icon" => true,
                 "icon" => file_get_contents(THEME_IMG . '/icon/plus-icon.svg'),

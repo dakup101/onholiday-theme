@@ -25,6 +25,7 @@ window.addEventListener("DOMContentLoaded", () => {
 	locationFilterHandle();
 
 	mobileMenu()
+	handleReservationFrame();
 
 	document.addEventListener("scroll", () => {
 		stickyHeaderHandle();
@@ -52,6 +53,20 @@ function mobileMenu(){
 		}
 	})
 
+	overlay.addEventListener("click", (ev) => {
+		ev.preventDefault();
+		if (overlay.classList.contains("show")){
+			menuTrigger.classList.toggle("active");
+			overlay.classList.toggle("show");
+			if (menuTrigger.classList.contains("active")){
+				menu.style.height =  "400px";
+			}
+			else{
+				menu.style.height = "0px";
+			}
+		}
+	})
+
 
 	const hasChildren = menu.querySelectorAll(".has-children");
 
@@ -60,8 +75,6 @@ function mobileMenu(){
 		const child = item.querySelector("nav");
 
 		trigger.addEventListener("click", (ev) => {
-
-
 			ev.preventDefault();
 			trigger.classList.toggle("active");
 			child.classList.toggle("collapse");
@@ -83,4 +96,26 @@ function mobileMenu(){
 		})
 	})
 
+}
+
+
+function handleReservationFrame(){
+	const btn = document.querySelector(".apartament-make-reservation") as HTMLAnchorElement;
+	if (!btn) return;
+
+	const reservationModal = document.querySelector(".ido-reservation");
+	const closeModal = reservationModal.querySelector(".ido-reservation-close");
+	const reservationFrame = reservationModal.querySelector("iframe") as HTMLIFrameElement;
+
+	btn.addEventListener("click", (ev) => {
+		ev.preventDefault();
+		reservationFrame.src = btn.href;
+		reservationModal.classList.toggle("show");
+	})
+
+	closeModal.addEventListener("click", (ev) => {
+		ev.preventDefault();
+		reservationFrame.src = null;
+		reservationModal.classList.toggle("show");
+	})
 }

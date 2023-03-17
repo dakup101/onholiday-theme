@@ -8,6 +8,8 @@ export default function themeSelectInit() {
 		const selectInner = select.querySelector(".select-value-wrapper");
 		const optionsHTML = select.querySelector(".select-options");
 
+		input.value = null;
+
 		select.addEventListener("click", (ev) => {
 			ev.preventDefault();
 		});
@@ -33,6 +35,9 @@ export default function themeSelectInit() {
 			}
 		});
 
+		selected.innerHTML = selected.getAttribute("data-start-name");
+
+
 		// Loop Through Select Options and make html as <li>
 		Array.from(options).forEach((option, i) => {
 			let value = (option as HTMLOptionElement).value;
@@ -48,12 +53,6 @@ export default function themeSelectInit() {
 			// !! END -- For Debugging
 
 			htmlItem.innerHTML = text;
-			// First Iteration
-			if (i == 0 && !select.classList.contains("multiple")) {
-				select.setAttribute("data-value", value);
-				selected.innerHTML = text;
-				htmlItem.classList.add("select-options-selected");
-			}
 
 			//
 			htmlItem.addEventListener("click", (ev) => {
@@ -73,15 +72,18 @@ export default function themeSelectInit() {
 					console.log(curValues);
 					(ev.currentTarget as HTMLElement).classList.toggle("checked");
 					
+
 					if (curValues.length) {
 						select.setAttribute("data-value", curValues.join(","));
 						selected.innerHTML = selected.getAttribute("data-name") + " (+" + curValues.length + ")";
 
 					} 
 					else{
-						selected.innerHTML = selected.getAttribute("data-name");
+						selected.innerHTML = selected.getAttribute("data-start-name");
 						select.setAttribute("data-value", "");
 					}
+
+
 					select.querySelector(".multiple-value").dispatchEvent(new Event("change"));
 
 				}
@@ -90,11 +92,21 @@ export default function themeSelectInit() {
 					optionsHTML.classList.remove("show");
 					selected.innerHTML = text;
 					select.setAttribute("data-value", value);
-					select
-						.querySelector(".select-options-selected")
-						.classList.remove("select-options-selected");
+					// select
+					// 	.querySelector(".select-options-selected")
+					// 	.classList.remove("select-options-selected");
 					htmlItem.classList.add("select-options-selected");
+
+
+
+						selected.innerHTML = selected.getAttribute("data-name") + ": " + text;
+
+	
+
 				}
+
+				
+
 				input.dispatchEvent(new Event("change"));
 			});
 			optionsHTML.appendChild(htmlItem);

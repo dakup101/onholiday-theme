@@ -8,7 +8,8 @@
         "title" => get_the_title(),
         "subtitle" => "Zarabiaj z nami",
         "alignment" => "center",
-        "tag" => "h1"
+        "tag" => "h1",
+        "class" => "font-alt"
     )) ?>
     <?php get_template_part(THEME_CMP, "info-cards", get_field("cards")) ?>
 </section>

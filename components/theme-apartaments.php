@@ -79,6 +79,7 @@ $shown_result = false;
         "title" => "OnHoliday - Apartamenty",
         "subtitle" => "Jakościowy wypoczynek",
         "tag" => "h1",
+        "class" => "font-alt"
     )) ?>
     <div class="apartaments-inner">
         <aside class="apartaments-filters">

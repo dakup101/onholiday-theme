@@ -10,6 +10,7 @@
         "title" => $summary["title"],
         "subtitle" => null,
         "alignment" => "left",
+        "class" => "font-alt"
     )) ?>
     <div class="summary-desc">
         <?php echo $summary["desc"]; ?>

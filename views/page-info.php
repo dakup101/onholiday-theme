@@ -9,7 +9,8 @@
             "title" => get_the_title(),
             "subtitle" => null,
             "alignment" => "center",
-            "tag" => "h1"
+            "tag" => "h1",
+            "class" => "font-alt"
         )) ?>
         <div class="gallery-intro-desc">
             <?php echo get_field("info_desc") ?>

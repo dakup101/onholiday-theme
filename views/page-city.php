@@ -17,6 +17,7 @@ get_template_part(THEME_CMP, "search-form");
     <?php get_template_part(THEME_CMP_CMN, "text-title", array(
         "title" => "Apartamenty w Kołobrzegu – oferta",
         "subtitle" => "nadmorskie apartamenty",
+        "class" => "font-alt"
     )) ?>
     <p class="text-center">On Holiday i apartamenty w Kołobrzegu to kilkanaście prestiżowych i bogato wyposażonych
         nieruchomości. Skierowane są do najbardziej wymagających klientów. Jest to doskonałe miejsce do odpoczynku
@@ -27,20 +28,20 @@ get_template_part(THEME_CMP, "search-form");
     <div class="apartament-list addons">
         <?php $i = array("", "", "", "", "");
         foreach ($i as $el) : ?>
-        <article class="apartament-list-item">
-            <a href="#" class="apartament-list-item-inner">
-                <div class="apartament-list-item-name">
-                    Apartamenty z basenem
-                </div>
-                <span href="#" class="apartament-list-item-link">
-                    Dowiedz się więcej
-                </span>
-            </a>
-            <figure class="apartament-list-item-bg">
-                <img src="<?php echo THEME_IMG . "default-apartament.jpg" ?>" alt="">
-                <div class="overlay"></div>
-            </figure>
-        </article>
+            <article class="apartament-list-item">
+                <a href="#" class="apartament-list-item-inner">
+                    <div class="apartament-list-item-name">
+                        Apartamenty z basenem
+                    </div>
+                    <span href="#" class="apartament-list-item-link">
+                        Dowiedz się więcej
+                    </span>
+                </a>
+                <figure class="apartament-list-item-bg">
+                    <img src="<?php echo THEME_IMG . "default-apartament.jpg" ?>" alt="">
+                    <div class="overlay"></div>
+                </figure>
+            </article>
         <?php endforeach; ?>
     </div>
     <?php get_template_part(THEME_CMP_CMN, "btn", array(

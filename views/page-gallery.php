@@ -8,7 +8,8 @@
             "title" => get_the_title(),
             "subtitle" => "Najnowsze zdjęcia",
             "alignment" => "center",
-            "tag" => "h1"
+            "tag" => "h1",
+            "class" => "font-alt"
         )) ?>
         <div class="gallery-intro-desc">
             <?php echo get_field("gallery_desc") ?>

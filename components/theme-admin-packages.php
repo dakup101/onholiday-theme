@@ -20,7 +20,8 @@
     "title" => $packages["title"],
     "subtitle" => $packages["subtitle"],
     "alignment" => "center",
-    "tag" => "h2"
+    "tag" => "h2",
+    "class" => "font-alt"
 )) ?>
 
 <div class="administration-packages-grid">

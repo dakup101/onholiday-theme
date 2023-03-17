@@ -1,5 +1,5 @@
 .btn{
-    padding: .5rem 2rem;
+    padding: .75rem 2.25rem;
     font-size: $fs-text;
     border-radius: 1000px;
     text-decoration: none;
@@ -8,12 +8,13 @@
     box-shadow: $shadow;
     transition: all .2s ease-in-out;
     display: block;
+    font-weight: bold;
     &:hover{
         box-shadow: $shadow-lg;
     }
     &-accent{
         background: $color-accent;
-        border: 1px solid $color-accent;
+        border: 2px solid $color-accent;
         color: #fff;
         &:hover{
             background: $color-accent-dark;
@@ -22,7 +23,7 @@
     }
     &-dark{
         background: $color-dark;
-        border: 1px solid $color-dark;
+        border: 2px solid $color-dark;
         color: #fff;
         &:hover{
             background: $color-accent-dark;
@@ -30,7 +31,7 @@
     }
     &-alt{
         background: transparent;
-        border: 1px solid #fff;
+        border: 2px solid #fff;
         color: #fff;
         &:hover{
             background: $color-accent-dark;
@@ -38,7 +39,7 @@
         }
         &-dark{
             background: transparent;
-            border: 1px solid $color-dark;
+            border: 2px solid $color-dark;
             color: $color-dark;
             &:hover{
                 background: $color-accent-dark;

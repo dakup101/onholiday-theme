@@ -17,6 +17,7 @@ get_template_part(THEME_CMP, "search-form");
     <?php get_template_part(THEME_CMP_CMN, "text-title", array(
         "title" => "Apartamenty - Kołobrzeg",
         "subtitle" => "nadmorskie apartamenty",
+        "class" => "font-alt"
     )) ?>
     <p class="text-center">Proponujemy Wam kilkanaście prestiżowych<br>apartamentów w najlepszych lokalizacjach w
         Kołobrzegu.</p>

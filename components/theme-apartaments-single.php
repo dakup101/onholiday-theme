@@ -39,14 +39,15 @@ get_template_part(THEME_CMP, "hero", array(
 ));
 ?>
 <section class="ido-gallery container">
-    <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2 ido-gallery-swiper">
+    <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
+        class="swiper mySwiper2 ido-gallery-swiper">
         <div class="swiper-wrapper">
             <?php foreach (get_field("media") as $img) : ?>
-                <div class="swiper-slide">
-                    <figure class="ido-gallery-item">
-                        <img src="<?php echo $img["url"] ?>" alt="<?php echo get_the_title(); ?>">
-                    </figure>
-                </div>
+            <div class="swiper-slide ">
+                <figure class="ido-gallery-item">
+                    <img src="<?php echo $img["url"] ?>" alt="<?php echo get_the_title(); ?>" class="glightbox">
+                </figure>
+            </div>
             <?php endforeach; ?>
         </div>
         <div class="swiper-button-next"></div>
@@ -55,11 +56,11 @@ get_template_part(THEME_CMP, "hero", array(
     <div thumbsSlider="" class="swiper mySwiper">
         <div class="swiper-wrapper">
             <?php foreach (get_field(("media")) as $img) : ?>
-                <div class="swiper-slide">
-                    <figure class="ido-gallery-item">
-                        <img src="<?php echo $img["url"] ?>" alt="<?php echo get_the_title(); ?>">
-                    </figure>
-                </div>
+            <div class="swiper-slide">
+                <figure class="ido-gallery-item">
+                    <img src="<?php echo $img["url"] ?>" alt="<?php echo get_the_title(); ?>">
+                </figure>
+            </div>
             <?php endforeach; ?>
         </div>
     </div>
@@ -71,13 +72,13 @@ get_template_part(THEME_CMP, "hero", array(
             <div class="ido-amenities">
 
                 <?php foreach (get_the_terms(get_the_ID(), "ido_amen") as $amt) : ?>
-                    <div class="ido-ament">
-                        <img src="https://client8748.idosell.com/images/amenities/<?php echo $amt->slug ?>.svg" alt="">
+                <div class="ido-ament">
+                    <img src="https://client8748.idosell.com/images/amenities/<?php echo $amt->slug ?>.svg" alt="">
 
-                        <p>
-                            <?php echo $amt->name ?>
-                        </p>
-                    </div>
+                    <p>
+                        <?php echo $amt->name ?>
+                    </p>
+                </div>
                 <?php endforeach; ?>
             </div>
         </div>
@@ -91,8 +92,10 @@ get_template_part(THEME_CMP, "hero", array(
     <div class="ido-reservation-nav">
         <span>Rezerwuj</span>
         <button class="ido-reservation-close">
-            <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l5.719-5.719-5.72-5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z" />
+            <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2"
+                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l5.719-5.719-5.72-5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z" />
             </svg>
         </button>
 

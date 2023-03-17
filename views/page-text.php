@@ -8,7 +8,8 @@
             "title" => get_the_title(),
             "subtitle" => get_field("subtitle"),
             "alignment" => "center",
-            "tag" => "h1"
+            "tag" => "h1",
+            "class" => "font-alt",
         )) ?>
     </div>
 </section>

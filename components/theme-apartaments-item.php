@@ -4,7 +4,9 @@
         <img src="<?php echo get_field("media")[0]["url"] ?>" alt="<?php echo get_the_title()  ?>" loading="lazy">
     </figure>
     <div class="apartaments-item-content">
-        <h3><a href="<?php echo get_the_permalink(); ?>"><?php echo get_the_title() ?></a></h3>
+        <h3 class="font-alt">
+            <a href="<?php echo get_the_permalink(); ?>"><?php echo get_the_title() ?></a>
+        </h3>
         <div class="apartaments-item-text">
             <?php echo get_field("desc_short") ?>
         </div>

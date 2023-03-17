@@ -13,6 +13,7 @@
                 "title" => $info["title"],
                 "subtitle" => $info["subtitle"],
                 "alignment" => "left",
+                "class" => "font-alt",
             )) ?>
             <div class="info-section-text">
                 <?php echo $info["text"] ?>

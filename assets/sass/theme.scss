@@ -10,6 +10,10 @@
 
 .font-alt{
     font-family: $font-alt;
+    line-height: 120%;
+    *{
+        font-family: inherit;
+    }
 }
 
 @import "./sub/layout";
@@ -480,4 +484,8 @@ a {
     &.show{
         transform: translateX(0);
     }
+}
+
+.glightbox{
+    cursor: pointer;
 }

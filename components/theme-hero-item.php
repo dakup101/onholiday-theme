@@ -1,9 +1,21 @@
-<?php $content = wp_parse_args($args, array()); ?>
+<?php $args = wp_parse_args($args, array()); 
+$content = $args["content"];
+?>
 <article class="hero-wrapper">
     <main class="hero-inner container">
+        <?php if ($args["key"] < 1) : ?>
+
+        <h1 class="hero-title font-alt">
+            <?php echo $content["title"] ?>
+        </h1>
+
+        <?php else: ?>
+
         <h2 class="hero-title font-alt">
             <?php echo $content["title"] ?>
         </h2>
+
+        <?php endif; ?>
         <?php if (!empty($content["text"])): ?>
         <div class="hero-content">
             <?php echo $content["text"] ?>

@@ -33,19 +33,22 @@ $hero = wp_parse_args($args, array(
 ?>
 <section class="hero <?php if ($hero["is_slider"]) echo "hero-slider" ?>">
     <?php if ($hero["is_slider"]) : ?>
-        <div class="hero-swiper">
-            <div class="swiper-wrapper">
-                <?php foreach ($hero["content"] as $content) : ?>
-                    <div class="swiper-slide">
-                        <?php get_template_part(THEME_CMP, "hero-item", $content) ?>
-                    </div>
-                <?php endforeach; ?>
+    <div class="hero-swiper">
+        <div class="swiper-wrapper">
+            <?php foreach ($hero["content"] as $key => $content) : ?>
+            <div class="swiper-slide">
+                <?php get_template_part(THEME_CMP, "hero-item", array(
+                    "key" => $key,
+                    "content" => $content
+                )) ?>
             </div>
-            <div class="swiper-pagination"></div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
+            <?php endforeach; ?>
         </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
     <?php else : ?>
-        <?php get_template_part(THEME_CMP, "hero-item", $hero["content"][0]) ?>
+    <?php get_template_part(THEME_CMP, "hero-item", $hero["content"][0]) ?>
     <?php endif; ?>
 </section>

@@ -15,15 +15,12 @@ get_template_part(THEME_CMP, "search-form");
 ?>
 <section class="container about-kolobrzeg">
     <?php get_template_part(THEME_CMP_CMN, "text-title", array(
-        "title" => __("Apartamenty w Kołobrzegu – oferta", "oh-theme"),
-        "subtitle" => "nadmorskie apartamenty",
+        "title" => get_field("title"),
+        "subtitle" => get_field("subtitle"),
         "class" => "font-alt"
     )) ?>
     <p class="text-center">
-        <?php echo __("<strong>Apartamenty OnHoliday w Kołobrzegu to kilkanaście prestiżowych, bogato wyposażonych nieruchomości które są skierowane do najbardziej wymagających klientów.</strong><br />
-         Jest to doskonałe miejsce do odpoczynku dla całych rodzin, a pary spędzą tu wiele niezapomnianych chwil. 
-         Nasza oferta świetnie sprawdzi się dla indywidualnych klientów oraz w przypadku wyjazdu w gronie przyjaciół. 
-         <u>Przestrzeń lokali bez trudu, ścisku i dyskomfortu pomieści nawet do 6 gości.</u>", "oh-theme") ?>
+        <?php get_field("desc"); ?>
     </p>
 
 

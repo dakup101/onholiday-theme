@@ -49,6 +49,9 @@ $hero = wp_parse_args($args, array(
         <div class="swiper-button-next"></div>
     </div>
     <?php else : ?>
-    <?php get_template_part(THEME_CMP, "hero-item", $hero["content"][0]) ?>
+    <?php get_template_part(THEME_CMP, "hero-item", array(
+        "key" => 0,
+        "content" => $hero["content"][0]
+    )) ?>
     <?php endif; ?>
 </section>

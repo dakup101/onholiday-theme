@@ -19,9 +19,9 @@ get_template_part(THEME_CMP, "search-form");
         "subtitle" => get_field("subtitle"),
         "class" => "font-alt"
     )) ?>
-    <p class="text-center">
-        <?php get_field("desc"); ?>
-    </p>
+    <div class="text-center">
+        <?php echo get_field("desc"); ?>
+    </div>
 
 
     <?php $kolobrzeg_items = new WP_Query( array(

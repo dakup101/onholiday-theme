@@ -12,7 +12,7 @@
         </div>
         <?php get_template_part(THEME_CMP_CMN, "btn", array(
             "link" => get_the_permalink(),
-            "text" => "Wybieram",
+            "text" => __("Sprawdź szczegóły", "oh-theme"),
             "class" => "",
             "type" => "accent btn-content",
         )) ?>

@@ -9,6 +9,7 @@ import searchFormHandle from "./handles/searchFrom-handle";
 import faqHandle from "./handles/faq-handle";
 import lightboxHandle from "./handles/lightbox-handle";
 import locationFilterHandle from "./handles/locationFilter-handle";
+import offerSliderHandle from "./handles/offerSlider-handle";
 
 
 
@@ -22,7 +23,8 @@ window.addEventListener("DOMContentLoaded", () => {
 	searchFormHandle();
 	faqHandle();
 	lightboxHandle();
-	locationFilterHandle();
+	// locationFilterHandle();
+	offerSliderHandle();
 
 	mobileMenu()
 	handleReservationFrame();

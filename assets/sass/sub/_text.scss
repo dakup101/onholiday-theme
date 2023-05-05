@@ -33,4 +33,10 @@
     &-left{
         text-align: left;
     }
+    ol, ul{
+        padding-left: 1em;
+        li{
+            margin-bottom: .5em;
+        }
+    }
 }

@@ -6,7 +6,7 @@
     <div class="container">
         <?php get_template_part(THEME_CMP_CMN, "text-title", array(
             "title" => get_the_title(),
-            "subtitle" => "Bądź w temacie",
+            "subtitle" => __("Bądź w temacie", "oh-theme"),
             "alignment" => "center",
             "tag" => "h1"
         )) ?>

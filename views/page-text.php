@@ -19,4 +19,8 @@
         <?php echo get_field("the_text"); ?>
     </div>
 </section>
+
+<?php get_template_part(THEME_CMP, "icons-row") ?>
+<?php get_template_part(THEME_CMP, "blog-grid", get_field("blog_grid_fields", "options")) ?>
+
 <?php get_footer(); ?>

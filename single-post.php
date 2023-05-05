@@ -19,6 +19,6 @@
     </figure>
 </section>
 <section class="container text">
-    <?php echo get_the_content(); ?>
+    <?php echo wpautop(get_the_content()); ?>
 </section>
 <?php get_footer(); ?>

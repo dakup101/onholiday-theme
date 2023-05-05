@@ -48,11 +48,17 @@ a {
 @import "./sub/administration";
 @import "./sub/summary";
 
+@import "./sub/from-wp-css";
+
 .gallery {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     align-items: flex-start;
+    margin-bottom: 3rem;
     gap: 2rem;
+    &-title{
+        margin-bottom: 3rem;
+    }
     @media(max-width: 1240px){
         grid-template-columns: 1fr 1fr 1fr;
     }
@@ -488,4 +494,36 @@ a {
 
 .glightbox{
     cursor: pointer;
+}
+
+.offer-slider{
+    margin-top: 2rem;
+    overflow: hidden;
+    &-button-next, &-button-prev{
+        color: #333;
+        &::after{
+            color: #333;
+        }
+    }
+    &-wrapper{
+        position: relative;
+        padding: 0 3rem;
+    }
+    .swiper-slide{
+        padding: 1.25rem;
+    }
+}
+
+.container.info, .container.text{
+    margin-bottom: 3rem;
+}
+
+.icons-row + .blog-grid{
+    margin-top: 0 !important;
+}
+
+.header-nav-btn{
+    margin-left: 2rem;
+    font-weight: 400;
+    padding: 0.5rem 1.5rem;
 }

@@ -7,7 +7,10 @@ function makePosts() {
     const btn = document.querySelector(".ido-make-posts");
     const output = document.querySelector(".ido-make-posts-output");
 
+
     btn.addEventListener("click", async (ev) => {
+        let lang = document.querySelector("input#idoLang").value;
+
         ev.preventDefault();
 
         output.querySelector(".ido-response").innerHTML = "Pobieram...";
@@ -21,6 +24,8 @@ function makePosts() {
             const data = new FormData();
             data.append('action', 'ido_make_posts');
             data.append('page', page);
+            data.append('lang', lang);
+
             let ajax = await fetch("/wp-admin/admin-ajax.php", {
                 method: "POST",
                 body: data,
@@ -54,6 +59,8 @@ function makePosts() {
 function updatePosts() {
     const btn = document.querySelector(".ido-update-posts");
     const output = document.querySelector(".ido-update-posts-output");
+    const lang = document.querySelector("input#idoLang").value;
+
 
     btn.addEventListener("click", async (ev) => {
         ev.preventDefault();
@@ -69,6 +76,8 @@ function updatePosts() {
             const data = new FormData();
             data.append('action', 'ido_update_posts');
             data.append('page', page);
+            data.append('lang', lang);
+
             let ajax = await fetch("/wp-admin/admin-ajax.php", {
                 method: "POST",
                 body: data,

@@ -1,55 +1,48 @@
 <?php
-$has_location = false;
-$has_date = false;
-$has_guests = false;
-$has_addons = false;
-if (isset($_POST["searchLocation"]) && !empty($_POST["searchLocation"])) $has_location = true;
-if (isset($_POST["searchDates"]) && !empty($_POST["searchDates"])) $has_date = true;
-if (isset($_POST["searchGuests"]) && !empty($_POST["searchGuests"])) $has_guests = true;
-if (isset($_POST["searchAddons"]) && !empty($_POST["searchAddons"])) $has_addons = true;
-
-if ($has_guests) $guests = $_POST["searchGuests"];
-if ($has_location) $location = $_POST["searchLocation"];
-if ($has_date) $dates = explode(",", $_POST["searchDates"]);
-
-if ($has_addons) {
-    $addons = explode(",", $_POST["searchAddons"]);
-}
-
+$args = wp_parse_args($args, array(
+    "items" => array(),
+));
 ?>
-<?php if ($has_guests || $has_location || $has_addons || $has_date) : ?>
+
+<?php if (!empty($args["items"])) : $query = $args["items"] ?>
 
     <form class="apartaments-filters-inner" autocomplete="off">
         <div class="apartaments-filters-item stats">
-            <p class="apartaments-filters-title font-alt">Wyszukanie:</p>
+            <p class="apartaments-filters-title font-alt"><?php echo __("Wyszukanie", "oh-theme") ?>:</p>
             <div class="apartaments-stats">
-                <?php if ($has_location) : ?>
+                <?php if ($query["searchLocation"] != null) : ?>
                     <div class="apartaments-stats-item">
-                        <strong>Miejscowość:</strong>
-                        <span><?= get_term_by("slug", $location, "ido_category")->name ?></span>
+                        <strong><?php echo __("Miejscowość", "oh-theme") ?>:</strong>
+                        <span><?= get_term_by("slug", $query["searchLocation"], "ido_category")->name ?></span>
                     </div>
                 <?php endif; ?>
-                <?php if ($has_date) : ?>
+                <?php if ($query["searchLocationSub"] != null) : ?>
                     <div class="apartaments-stats-item">
-                        <strong>Przyjazd:</strong>
-                        <span><?= $dates[0] ?></span>
-                    </div>
-                    <div class="apartaments-stats-item">
-                        <strong>Wyjazd:</strong>
-                        <span><?= $dates[1] ?></span>
+                        <strong><?php echo __("Dzielnica", "oh-theme") ?>:</strong>
+                        <span><?= get_term_by("slug", $query["searchLocationSub"], "ido_loc")->name ?></span>
                     </div>
                 <?php endif; ?>
-                <?php if ($has_guests) : ?>
+                <?php if ($query["searchDates"] != null) : ?>
                     <div class="apartaments-stats-item">
-                        <strong>Ilość Gości:</strong>
-                        <span><?= $guests ?></span>
+                        <strong><?php echo __("Przyjazd", "oh-theme") ?>:</strong>
+                        <span><?= $query["searchDates"][0] ?></span>
+                    </div>
+                    <div class="apartaments-stats-item">
+                        <strong><?php echo __("Wyjazd", "oh-theme") ?>:</strong>
+                        <span><?= $query["searchDates"][1] ?></span>
                     </div>
                 <?php endif; ?>
-                <?php if ($has_addons) : ?>
+                <?php if ($query["searchGuests"] != null) : ?>
                     <div class="apartaments-stats-item">
-                        <strong>Udogodnienia:</strong>
+                        <strong><?php echo __("Ilość Gości", "oh-theme") ?>:</strong>
+                        <span><?= $query["searchGuests"] ?></span>
+                    </div>
+                <?php endif; ?>
+                <?php if ($query["searchAddons"]) : ?>
+                    <div class="apartaments-stats-item">
+                        <strong><?php echo __("Udogodnienia", "oh-theme") ?>:</strong>
                         <?php
-                        $addons_count = count($addons);
+                        $addons_count = count($query["searchAddons"]);
                         $counter = 1;
                         ?>
                         <span>
@@ -80,7 +73,7 @@ if ($has_addons) {
     </div> -->
         <!-- Filter: Region -->
         <div class="apartaments-filters-item region">
-            <p class="apartaments-filters-title font-alt">Dzielnice:</p>
+            <p class="apartaments-filters-title font-alt"><?php echo __("Dzielnice", "oh-theme") ?>:</p>
             <div class="apartaments-filters-wrapper">
                 <?php
                 $locs = get_terms(array(
@@ -91,16 +84,22 @@ if ($has_addons) {
                 ?>
                     <?php
                     $cat = get_field("cat", $loc);
-                    if (get_term_by("id", $cat, "ido_category")->slug == $location) :
+                    if ($cat->slug == $query["searchLocation"]) :
                     ?>
-                        <input type="radio" name="region" id="<?= $loc->term_id ?>">
-                        <label for="<?= $loc->term_id ?>">
+                        <a href="<?php echo get_term_link($loc) ?>" class="<?php if (get_term_by("slug", $query["searchLocationSub"], "ido_loc")->slug == $loc->slug) echo "active"; ?>">
                             <?= $loc->name ?>
-                        </label>
+                        </a>
                     <?php endif; ?>
                 <?php endforeach; ?>
             </div>
         </div>
+
+        <div class="apartaments-filters-item region">
+            <a href="<?php echo __("/apartamenty/", "oh-theme"); ?>" class="return-to-apartaments">
+                <?php echo __("Wróć do wszystkich apartamentów", "oh-theme") ?>
+            </a>
+        </div>
+
         <!-- Filter: Amenities
     <div class="apartaments-filters-item amenities">
         <p class="apartaments-filters-title">Udogodnienia:</p>
@@ -127,10 +126,12 @@ if ($has_addons) {
 <?php endif; ?>
 <div class="apartaments-filters-inner articles">
     <div class="apartaments-filters-item">
-        <p class="apartaments-filters-title font-alt">Nie mozesz wybrać?</p>
-        <p class="apartaments-filters-text">Przygotowaliśmy dla Ciebie informacje na temat apartamentów w Kołobrzegu i
-            Świeradowie-Zdroju. Zapraszamy do
-            przeczytania!</p>
+        <p class="apartaments-filters-title font-alt">
+            <?php echo __("Nie mozesz wybrać?", "oh-theme"); ?>
+        </p>
+        <p class="apartaments-filters-text">
+            <?php echo __("Przygotowaliśmy dla Ciebie informacje na temat apartamentów w Kołobrzegu i Świeradowie-Zdroju. Zapraszamy do przeczytania!", "oh-theme") ?>
+        </p>
         <div class="apartaments-filters-articles">
             <a href="#">Atrakcje w Kołobrzegu</a>
             <a href="#">Atrakcje w Świeradowie-Zdroju</a>

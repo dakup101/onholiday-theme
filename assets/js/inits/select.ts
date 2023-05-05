@@ -100,16 +100,16 @@ export default function themeSelectInit() {
 
 
 						selected.innerHTML = selected.getAttribute("data-name") + ": " + text;
-
-	
-
 				}
-
-				
-
 				input.dispatchEvent(new Event("change"));
 			});
 			optionsHTML.appendChild(htmlItem);
+
+			if (select.hasAttribute("data-selected")) {
+				const activeOption = select.querySelector('.select-options-item[data-value="' + select.getAttribute("data-selected") + '"]') as HTMLElement;
+				console.log(activeOption);
+				if (activeOption) activeOption.click();
+			}
 		});
 	});
 }

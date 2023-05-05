@@ -12,10 +12,10 @@
             </a>
         </h3>
         <p class="blog-grid-item-text">
-            <?php echo substr( get_the_excerpt(), 0, 100) . "..."; ?>
+            <?php echo substr(get_the_excerpt(), 0, 100) . "..."; ?>
         </p>
         <a href="<?php echo get_the_permalink() ?>" class="blog-grid-item-link">
-            Czytaj więcej
+            <?php echo __("Czytaj więcej", "oh-theme") ?>
         </a>
     </main>
 </article>

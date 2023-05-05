@@ -10,7 +10,15 @@ function ido_make_posts()
 function ido_make_posts_hadnle()
 {
     $page = (int) $_POST["page"];
-    $ido = new IdoBooking_API;
+    $lang = $_POST["lang"];
+
+    global $sitepress;
+    $sitepress->switch_lang($lang);
+
+    $ido_lang = $lang == "pl" ? "pol" : "ger";
+
+    $ido = new IdoBooking_API($ido_lang);
+
     $object_arr = $ido->get_object($page, 1);
     if (!empty($object_arr)) {
         $item = $object_arr[0];
@@ -19,7 +27,9 @@ function ido_make_posts_hadnle()
             'numberposts'    => -1,
             'post_type'        => 'ido-apartaments',
             'meta_key'        => 'ido_id',
-            'meta_value'    => $item->id
+            'meta_value'    => $item->id,
+            'suppress_filters' => false
+
         );
 
         $posts = get_posts($my_args);
@@ -38,7 +48,7 @@ function ido_make_posts_hadnle()
             echo json_encode(array(
                 "page" => $page,
                 "fetched" => true,
-                "msg" => "ido#" . $item->id . ": utworzono apartament (wp#" . $thePostId . ")"
+                "msg" => "ido#" . $item->id . ": utworzono apartament (wp#" . $thePostId . ") Język: " . $ido_lang
             ));
             wp_die();
         } else {
@@ -46,7 +56,7 @@ function ido_make_posts_hadnle()
             echo json_encode(array(
                 "page" => $page,
                 "fetched" => true,
-                "msg" => "ido#" . $item->id . ": apartament już istnieje (wp#" . $post_id . ")"
+                "msg" => "ido#" . $item->id . ": apartament już istnieje (wp#" . $post_id . ") | Język: " . $ido_lang
             ));
             wp_die();
         }
@@ -55,7 +65,7 @@ function ido_make_posts_hadnle()
         echo json_encode(array(
             "page" => $page,
             "fetched" => false,
-            "msg" => "Koniec pobierania"
+            "msg" => "Koniec pobierania | Lang " . $lang
         ));
         wp_die();
     }

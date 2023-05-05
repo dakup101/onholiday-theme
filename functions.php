@@ -47,3 +47,37 @@ require_once THEME_IDO . 'admin-page.php';
 require_once THEME_IDO . 'db-table.php';
 require_once THEME_IDO . 'ajax-make-posts.php';
 require_once THEME_IDO . 'ajax-update-posts.php';
+
+
+function get_language_shortcode()
+{
+    return apply_filters('wpml_current_language', null);
+}
+
+add_filter( 'redirect_canonical', 'custom_post_redirect' );
+function custom_post_redirect( $redirect_url ) {
+    // Get the current post ID
+    $post_id = get_queried_object_id();
+
+    // Get the current post slug
+    $post_slug = get_post_field( 'post_name', $post_id );
+
+    // Check if the post slug starts with "blog-post/"
+    if ( strpos( $post_slug, 'blog-post/' ) === 0 ) {
+        // Remove "blog-post/" from the slug
+        $new_slug = str_replace( 'blog-post/', '', $post_slug );
+
+        // Build the new URL with the new slug
+        $new_url = home_url( $new_slug . '/' );
+
+        // Redirect to the new URL
+        wp_redirect( $new_url, 301 );
+        exit;
+    }
+
+    return $redirect_url;
+}
+
+add_action( 'parse_query', function ( $wp_query ) {
+    $wp_query->query_vars['cache_results'] = false;
+ } );

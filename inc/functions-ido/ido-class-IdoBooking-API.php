@@ -10,6 +10,7 @@ class IdoBooking_API extends IdoBooking
         $request['authenticate']['systemKey'] = $this->get_key();
         $request['authenticate']['systemLogin'] = $this->client->systemLogin;
         $request['authenticate']['lang'] = $this->language;
+        // $request['authenticate']['lang'] = "ger";
         $request['result'] = array();
         $request['result']['page'] = $page;
         $request['result']['number'] = $number;

@@ -10,7 +10,14 @@ function ido_update_posts()
 function ido_update_posts_hadnle()
 {
     $page = (int) $_POST["page"];
-    $ido = new IdoBooking_API;
+    $lang = $_POST["lang"];
+
+    global $sitepress;
+    $sitepress->switch_lang($lang);
+
+    $ido_lang = $lang == "pl" ? "pol" : "ger";
+
+    $ido = new IdoBooking_API($ido_lang);
     $object_arr = $ido->get_object($page, 1);
 
 
@@ -32,7 +39,7 @@ function ido_update_posts_hadnle()
             echo json_encode(array(
                 "page" => $page,
                 "fetched" => true,
-                "msg" => "ido#" . $item->id . ": apartament nie jest pobrany na stronę"
+                "msg" => "ido#" . $item->id . ": apartament nie jest pobrany na stronę | Język: " . $ido_lang
             ));
             wp_die();
         }
@@ -106,14 +113,14 @@ function ido_update_posts_hadnle()
         echo json_encode(array(
             "page" => $page,
             "fetched" => true,
-            "msg" => "ido#" . $item->id . ": zaktualizowano apartament (wp#" . $post_id . ")"
+            "msg" => "ido#" . $item->id . ": zaktualizowano apartament (wp#" . $post_id . ") | Język: " . $ido_lang
         ));
         wp_die();
     } else {
         echo json_encode(array(
             "page" => $page,
             "fetched" => false,
-            "msg" => "Koniec pobierania"
+            "msg" => "Koniec pobierania | Język: " . $ido_lang
         ));
         wp_die();
     }

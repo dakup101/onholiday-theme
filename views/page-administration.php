@@ -6,7 +6,7 @@
 <section class="container administration-start">
     <?php get_template_part(THEME_CMP_CMN, "text-title", array(
         "title" => get_the_title(),
-        "subtitle" => "Zarabiaj z nami",
+        "subtitle" => __("Zarabiaj z nami", "oh-theme"),
         "alignment" => "center",
         "tag" => "h1",
         "class" => "font-alt"

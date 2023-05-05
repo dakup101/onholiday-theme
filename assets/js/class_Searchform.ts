@@ -1,6 +1,8 @@
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.css"
 import "flatpickr/dist/l10n/pl.js";
+import "flatpickr/dist/l10n/de.js";
+
 
 export default class searchForm{
     form;
@@ -107,11 +109,12 @@ export default class searchForm{
     }
     datePicker(){
         let dateInput = this.inputs.dates as HTMLInputElement;
+        let lang = dateInput.getAttribute("data-lang");
         let today = new Date();
         let tomorrow = new Date(today.getTime() + 24 * 60 * 60 * 1000);
         if (window.screen.width < 768){
             flatpickr('.search-date', {
-                locale: "pl",
+                locale: lang == "pl" ? "pl" : "de",
                 mode: "range",
                 wrap: true,
                 enableTime: false,

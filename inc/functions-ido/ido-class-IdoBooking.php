@@ -3,12 +3,12 @@ class IdoBooking
 {
     // @client (object): systemClient, systemLogin, systemPwd
     protected $client;
-    protected $language;
+    public $language;
 
-    public function __construct()
+    public function __construct($lang = "pol")
     {
         $this->update_client();
-        $this->language = "pol";
+        $this->language = $lang;
     }
 
     public function update_db($systemClient, $systemLogin, $systemPWD)

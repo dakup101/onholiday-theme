@@ -1,0 +1,95 @@
+.home-action-forms{
+	display: grid;
+	align-items: center;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 2rem;
+}
+
+.home-action-forms form{
+	display: flex;
+	justify-content: center;
+}
+
+.header{
+	z-index: 1000 !important;
+}
+
+.home-cards{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 3rem;
+}
+
+.home-cards .info-cards{
+	display: grid;
+	grid-template-columns: 1fr;
+}
+
+@media(max-width: 991px){
+	.home-cards{
+		grid-template-columns: 1fr;
+	}
+}
+
+.apartament-list-all{
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 1.5rem;
+	width: 100%;
+	margin: 3.5rem 0;
+}
+
+@media(max-width: 1440px){
+	
+.apartament-list-all{
+	grid-template-columns: repeat(4, 1fr);
+}
+}
+
+@media(max-width: 1240px){
+	
+.apartament-list-all{
+	grid-template-columns: repeat(3, 1fr);
+}
+}
+
+@media(max-width: 991px){
+	
+.apartament-list-all{
+	grid-template-columns: repeat(2, 1fr);
+}
+}
+
+@media(max-width: 768px){
+	
+.apartament-list-all{
+	grid-template-columns: repeat(2, 1fr);
+}
+}
+
+@media(max-width: 648px){
+	
+.apartament-list-all{
+	grid-template-columns: repeat(1, 1fr);
+}
+}
+
+.text h2{
+		font-size: 1.85rem;
+}
+	
+.text h3{
+		font-size: 1.75rem;
+}
+
+.text h4{
+		font-size: 1.5rem;
+}
+
+.text h5{
+		font-size: 1.5rem;
+}
+
+.text h6{
+		font-size: 1.5rem;
+}

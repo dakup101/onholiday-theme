@@ -17,7 +17,7 @@ export default function megamenu() {
 			dropDownTimeout = setTimeout(() => {
 				dropDown.classList.add("hidden");
 				itemLink.classList.remove("collapse");
-			}, 100);
+			}, 200);
 		});
 
 		dropDown.addEventListener("mouseenter", () => {
@@ -28,7 +28,7 @@ export default function megamenu() {
 			dropDownTimeout = setTimeout(() => {
 				dropDown.classList.add("hidden");
 				itemLink.classList.remove("collapse");
-			}, 100);
+			}, 200);
 		});
 	});
 }

@@ -1,13 +1,14 @@
+header{
+    position: relative;
+    z-index: 500;
+}
 .header {
     box-shadow: $shadow;
     font-size: $fs-text;
-    z-index: 200;
-    top: -80px;
+    z-index: 500;
     left: 0;
     background: #fff;
     transition: all .2s ease-in-out;
-
-
 
     &.sticky {
         top: 0;

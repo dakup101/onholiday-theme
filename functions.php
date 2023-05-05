@@ -34,6 +34,7 @@ require_once THEME_FUN . 'acf-options-page.php';
 
 // *** AJAX *** //
 
+require_once THEME_FUN . 'ajax-city-offer.php';
 
 // *** IDO BOOKING *** //
 

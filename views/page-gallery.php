@@ -35,6 +35,11 @@
                     </a>
                 <?php endforeach; ?>
             </div>
+            <?php if (!empty($galleries["desc"])) : ?>
+            <div class="gallery-desc">
+                <?php echo $galleries["desc"] ?>
+            </div>
+            <?php endif; ?>
         <?php endforeach; ?>
     </div>
 </section>

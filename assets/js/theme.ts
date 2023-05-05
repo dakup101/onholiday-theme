@@ -10,8 +10,7 @@ import faqHandle from "./handles/faq-handle";
 import lightboxHandle from "./handles/lightbox-handle";
 import locationFilterHandle from "./handles/locationFilter-handle";
 import offerSliderHandle from "./handles/offerSlider-handle";
-
-
+import cityOffer from "./inits/cityOffer";
 
 window.addEventListener("DOMContentLoaded", () => {
 	selectHandle();
@@ -25,18 +24,17 @@ window.addEventListener("DOMContentLoaded", () => {
 	lightboxHandle();
 	// locationFilterHandle();
 	offerSliderHandle();
+	cityOffer();
 
-	mobileMenu()
+	mobileMenu();
 	handleReservationFrame();
 
 	document.addEventListener("scroll", () => {
 		stickyHeaderHandle();
 	});
-
 });
 
-function mobileMenu(){
-
+function mobileMenu() {
 	const menu = document.querySelector(".mobile-nav-menu") as HTMLElement;
 	if (!menu) return;
 
@@ -47,32 +45,29 @@ function mobileMenu(){
 		ev.preventDefault();
 		menuTrigger.classList.toggle("active");
 		overlay.classList.toggle("show");
-		if (menuTrigger.classList.contains("active")){
-			menu.style.height =  "400px";
-		}
-		else{
+		if (menuTrigger.classList.contains("active")) {
+			menu.style.height = "400px";
+		} else {
 			menu.style.height = "0px";
 		}
-	})
+	});
 
 	overlay.addEventListener("click", (ev) => {
 		ev.preventDefault();
-		if (overlay.classList.contains("show")){
+		if (overlay.classList.contains("show")) {
 			menuTrigger.classList.toggle("active");
 			overlay.classList.toggle("show");
-			if (menuTrigger.classList.contains("active")){
-				menu.style.height =  "400px";
-			}
-			else{
+			if (menuTrigger.classList.contains("active")) {
+				menu.style.height = "400px";
+			} else {
 				menu.style.height = "0px";
 			}
 		}
-	})
-
+	});
 
 	const hasChildren = menu.querySelectorAll(".has-children");
 
-	Array.from(hasChildren).forEach(item => {
+	Array.from(hasChildren).forEach((item) => {
 		const trigger = item.querySelector(".children-trigger");
 		const child = item.querySelector("nav");
 
@@ -80,44 +75,46 @@ function mobileMenu(){
 			ev.preventDefault();
 			trigger.classList.toggle("active");
 			child.classList.toggle("collapse");
-			if (child.classList.contains("collapse")){
+			if (child.classList.contains("collapse")) {
 				child.style.height = child.scrollHeight + "px";
-			}
-			else {
+			} else {
 				child.removeAttribute("style");
-				Array.from(item.querySelectorAll("collapse")).forEach(collapsed => {
+				Array.from(item.querySelectorAll("collapse")).forEach((collapsed) => {
 					collapsed.classList.remove("collapse");
 					collapsed.removeAttribute("style");
-				})
+				});
 			}
 
-			Array.from(menu.querySelectorAll(".collapse")).forEach(collapsed => {
-				(collapsed as HTMLElement).style.height = collapsed.children[0].clientHeight + "px";
+			Array.from(menu.querySelectorAll(".collapse")).forEach((collapsed) => {
+				(collapsed as HTMLElement).style.height =
+					collapsed.children[0].clientHeight + "px";
 				console.log(collapsed);
-			})
-		})
-	})
-
+			});
+		});
+	});
 }
 
-
-function handleReservationFrame(){
-	const btn = document.querySelector(".apartament-make-reservation") as HTMLAnchorElement;
+function handleReservationFrame() {
+	const btn = document.querySelector(
+		".apartament-make-reservation"
+	) as HTMLAnchorElement;
 	if (!btn) return;
 
 	const reservationModal = document.querySelector(".ido-reservation");
 	const closeModal = reservationModal.querySelector(".ido-reservation-close");
-	const reservationFrame = reservationModal.querySelector("iframe") as HTMLIFrameElement;
+	const reservationFrame = reservationModal.querySelector(
+		"iframe"
+	) as HTMLIFrameElement;
 
 	btn.addEventListener("click", (ev) => {
 		ev.preventDefault();
 		reservationFrame.src = btn.href;
 		reservationModal.classList.toggle("show");
-	})
+	});
 
 	closeModal.addEventListener("click", (ev) => {
 		ev.preventDefault();
 		reservationFrame.src = null;
 		reservationModal.classList.toggle("show");
-	})
+	});
 }

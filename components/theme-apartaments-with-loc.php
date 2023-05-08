@@ -68,27 +68,45 @@ if ($has_addons) {
     $query["searchAddons"] = $addons;
 }
 
+$currentDate = date('Y-m-d');
 if ($has_date) {
-    $dates = explode(",", $_POST["searchDates"]);
-    $guests = $_POST["searchGuests"];
-
-    $_SESSION["searchDates"] = $dates;
-    $_SESSION["searchGuest"] = $guests;
-
-    $ido_avi = $ido->get_aviability($dates[0], $dates[1], $guests)->offers;
-    if (!empty($ido_avi)) {
-        foreach ($ido_avi as $item) {
-            $date_filtered_offers[] = $item->offerId;
-        }
-    }
-
-    $query["searchDates"] = $dates;
+	$dates = explode(",", $_POST["searchDates"]);
+	$guests = $_POST["searchGuests"];
 }
+else {
+	$dates = array(
+		date('Y-m-d', strtotime($currentDate . ' +2 days')),
+		date('Y-m-d', strtotime($currentDate . ' +4 days'))
+	);
+	$guests = $_POST["searchGuests"];
+}
+
+$_SESSION["searchDates"] = $dates;
+$_SESSION["searchGuest"] = $guests;
+
+$ido_avi = $ido->get_aviability($dates[0], $dates[1], $guests)->offers;
+if (!empty($ido_avi)) {
+	foreach ($ido_avi as $item) {
+		$date_filtered_offers[] = $item->offerId;
+	}
+}
+
+$query["searchDates"] = $dates;
 
 $apartaments = new WP_Query($args);
 $shown_result = false;
 ?>
 
+
+<input type="hidden"
+       value="<?php echo isset($dates[0]) ? $dates[0] : date('Y-m-d', strtotime($currentDate . ' +2 days'));  ?>"
+       name="searchDateFrom"
+       id="searchDateFrom">
+
+<input type="hidden"
+       value="<?php echo isset($dates[1]) ? $dates[1] : date('Y-m-d', strtotime($currentDate . ' +4 days')); ?>"
+       name="searchDateTo"
+       id="searchDateTo">
 
 <?php get_template_part(THEME_CMP, "search-form", array("ido_cat" => $city, "ido_loc" => $term)); ?>
 <section class="container apartaments">
@@ -104,8 +122,8 @@ $shown_result = false;
             <?php get_template_part(THEME_CMP, "apartaments-filters", array("items" => $query)) ?>
         </aside>
         <?php if ($apartaments->have_posts()) : ?>
-            <div class="apartaments-list">
-                <?php
+        <div class="apartaments-list">
+            <?php
                 while ($apartaments->have_posts()) {
                     $apartaments->the_post();
                     if (!empty($date_filtered_offers)) {
@@ -120,14 +138,14 @@ $shown_result = false;
                 }
                 wp_reset_query();
                 ?>
-            </div>
+        </div>
         <?php else : $shown_result = false; ?>
         <?php endif; ?>
         <?php if (!$shown_result) : ?>
-            <div class="apartaments-no-items">
-                <strong><?php echo __("Brak dostępnych apartamentów", "oh-theme") ?></strong>
-                <span><?php echo __("Spróbuj wybrać inną datę / udogodnienia", "oh-theme") ?></span>
-            </div>
+        <div class="apartaments-no-items">
+            <strong><?php echo __("Brak dostępnych apartamentów", "oh-theme") ?></strong>
+            <span><?php echo __("Spróbuj wybrać inną datę / udogodnienia", "oh-theme") ?></span>
+        </div>
         <?php endif; ?>
     </div>
 </section>

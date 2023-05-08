@@ -61,35 +61,57 @@ if ($has_addons) {
 
 	$query["searchAddons"] = $addons;
 }
-
+$currentDate = date('Y-m-d');
 if ($has_date) {
 	$dates = explode(",", $_POST["searchDates"]);
 	$guests = $_POST["searchGuests"];
-
-	$_SESSION["searchDates"] = $dates;
-	$_SESSION["searchGuest"] = $guests;
-
-	$ido_avi = $ido->get_aviability($dates[0], $dates[1], $guests)->offers;
-	if (!empty($ido_avi)) {
-		foreach ($ido_avi as $item) {
-			$date_filtered_offers[] = $item->offerId;
-		}
-	}
-
-	$query["searchDates"] = $dates;
 }
+else {
+	$dates = array(
+		date('Y-m-d', strtotime($currentDate . ' +2 days')),
+		date('Y-m-d', strtotime($currentDate . ' +4 days'))
+	);
+	$guests = $_POST["searchGuests"];
+}
+
+$_SESSION["searchDates"] = $dates;
+$_SESSION["searchGuest"] = $guests;
+
+$ido_avi = $ido->get_aviability($dates[0], $dates[1], $guests)->offers;
+if (!empty($ido_avi)) {
+	foreach ($ido_avi as $item) {
+		$date_filtered_offers[] = $item->offerId;
+	}
+}
+
+$query["searchDates"] = $dates;
+
+
 $apartaments = new WP_Query($args);
 $shown_result = false;
 ?>
 
 
 <?php
+
+
 if ($has_location) get_template_part(THEME_CMP, "search-form", array("ido_cat" => get_term_by("slug", $location, "ido_category")));
 else get_template_part(THEME_CMP, "search-form");
 ?>
+
+<input type="hidden"
+       value="<?php echo isset($dates[0]) ? $dates[0] : date('Y-m-d', strtotime($currentDate . ' +2 days'));  ?>"
+       name="searchDateFrom"
+       id="searchDateFrom">
+
+<input type="hidden"
+       value="<?php echo isset($dates[1]) ? $dates[1] : date('Y-m-d', strtotime($currentDate . ' +4 days')); ?>"
+       name="searchDateTo"
+       id="searchDateTo">
+
 <section class="container apartaments">
-	<?php if (isset($_POST["searchLocation"]) && !empty($_POST["searchLocation"])) : ?>
-	<?php
+    <?php if (isset($_POST["searchLocation"]) && !empty($_POST["searchLocation"])) : ?>
+    <?php
 	$title = array(
 		"title" => __(" Wolne apartamenty w wybranym przez Ciebie terminie", "oh-theme"),
 		"subtitle" => null,
@@ -100,31 +122,31 @@ else get_template_part(THEME_CMP, "search-form");
 	if ($has_location) $title["subtitle"] = $dates[0] . " / " . $dates[1];
 	?>
 
-	<?php else: ?>
+    <?php else: ?>
 
-	<?php
+    <?php
 	$title = array(
 		"title" => __("Wybierz idealne miejsce na Twój wypoczynek", "oh-theme"),
-		"subtitle" => null,
+		"subtitle" => $dates[0] . " / " . $dates[1],
 		"tag" => "h1",
 		"class" => "font-alt"
 	);
 	if ($has_location) $title["subtitle"] = get_term_by("slug", $location, "ido_category")->name;
 	?>
-	
-	
-	<?php endif; ?>
-	
-	<?php
+
+
+    <?php endif; ?>
+
+    <?php
 	get_template_part(THEME_CMP_CMN, "text-title", $title)
 	?>
-	<div class="apartaments-inner">
-		<aside class="apartaments-filters">
-			<?php get_template_part(THEME_CMP, "apartaments-filters", array("items" => $query)) ?>
-		</aside>
-		<?php if ($apartaments->have_posts()) : ?>
-		<div class="apartaments-list">
-			<?php
+    <div class="apartaments-inner">
+        <aside class="apartaments-filters">
+            <?php get_template_part(THEME_CMP, "apartaments-filters", array("items" => $query)) ?>
+        </aside>
+        <?php if ($apartaments->have_posts()) : ?>
+        <div class="apartaments-list">
+            <?php
 			while ($apartaments->have_posts()) {
 				$apartaments->the_post();
 				if (!empty($date_filtered_offers)) {
@@ -139,16 +161,16 @@ else get_template_part(THEME_CMP, "search-form");
 			}
 			wp_reset_query();
 			?>
-		</div>
-		<?php else : $shown_result = false; ?>
-		<?php endif; ?>
-		<?php if (!$shown_result) : ?>
-		<div class="apartaments-no-items">
-			<strong><?php echo __("Brak dostępnych apartamentów", "oh-theme") ?></strong>
-			<span><?php echo __("Spróbuj wybrać inną datę / udogodnienia", "oh-theme") ?></span>
-		</div>
-		<?php endif; ?>
-	</div>
+        </div>
+        <?php else : $shown_result = false; ?>
+        <?php endif; ?>
+        <?php if (!$shown_result) : ?>
+        <div class="apartaments-no-items">
+            <strong><?php echo __("Brak dostępnych apartamentów", "oh-theme") ?></strong>
+            <span><?php echo __("Spróbuj wybrać inną datę / udogodnienia", "oh-theme") ?></span>
+        </div>
+        <?php endif; ?>
+    </div>
 </section>
 <?php get_template_part(THEME_CMP, "icons-row") ?>
 <?php // get_template_part(THEME_CMP, "cta", get_field("cta")) 

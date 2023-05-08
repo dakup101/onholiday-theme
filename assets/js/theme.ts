@@ -12,6 +12,8 @@ import locationFilterHandle from "./handles/locationFilter-handle";
 import offerSliderHandle from "./handles/offerSlider-handle";
 import cityOffer from "./inits/cityOffer";
 
+import getPrices from "./inits/getPrices";
+
 window.addEventListener("DOMContentLoaded", () => {
 	selectHandle();
 	megamenuHandle();
@@ -28,6 +30,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
 	mobileMenu();
 	handleReservationFrame();
+
+	getPrices();
 
 	document.addEventListener("scroll", () => {
 		stickyHeaderHandle();

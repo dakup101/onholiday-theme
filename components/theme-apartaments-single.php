@@ -14,37 +14,55 @@ $_SESSION["apartament"] = get_field("ido_id");
 
 
 $lang = get_language_shortcode();
+$currentDate = date('Y-m-d');
 
 $lang_iframe = $lang == "pl" ? "1" : "3";
+$startDate = isset($_SESSION["searchDates"][0]) ? $_SESSION["searchDates"][0] : date('Y-m-d', strtotime($currentDate . ' +2 days'));
+$endDate = isset($_SESSION["searchDates"][1]) ? $_SESSION["searchDates"][1] : date('Y-m-d', strtotime($currentDate . ' +4 days'));
+
 
 if (!empty($_SESSION["searchDates"][0])) {
-	$apartament_link = "https://client8748.idosell.com/widget/booking/defaultchoice/" . "start_date/" . $_SESSION["searchDates"][0] . "/end_date/" . $_SESSION["searchDates"][1] . "/currency/1/language/" . $lang_iframe . "/persons-adult/" . $_SESSION["guests"] . "/?ob[" . $_SESSION["apartament"] . "]";
+	$apartament_link = "https://client8748.idosell.com/widget/booking/defaultchoice/" . "start_date/" . $startDate . "/end_date/" . $endDate . "/currency/1/language/" . $lang_iframe . "/persons-adult/" . $_SESSION["guests"] . "/?ob[" . $_SESSION["apartament"] . "]";
 } else $apartament_link = "https://client8748.idosell.com/widget2/index.php?ob[" . get_field("ido_id") . "]=&from_own_button=1&language=" . $lang_iframe;
 
 // echo $apartament_link;
 
 // Hero
+
+$price_string = '<span class="apartaments-item single" data-objectID="'.get_field("ido_id").'"><span class="apartaments-item-price-wrap">' . __("Cena w wybranym okresie", "oh-theme") . '<br>('.$startDate.' / '.$endDate.')' . '<span class="apartaments-item-price">' . __("Obliczam cenę wynajmu...", "oh-theme") . '</span></span></span>';
+
 get_template_part(THEME_CMP, "hero", array(
-	"is_slider" => false,
-	"content" => array(
-		array(
-			"title" => get_the_title(),
-			"text" => get_field("desc_short"),
-			"bg_img" => get_field("media")[0]["url"],
-			"btn_main" => array(
-				// Use in component?
-				"active" => true,
-				// Array structure for btn component
-				"link" => $apartament_link,
-				"text" => __("Poznaj cenę i zarezerwuj<br>ten apartament", "oh-theme"),
-				"class" => "apartament-make-reservation",
-				"type" => "accent",
-				"no_follow" => true,
-			),
-		)
-	),
+"is_slider" => false,
+"content" => array(
+array(
+"title" => get_the_title(),
+"text" => get_field("desc_short") . $price_string,
+"bg_img" => get_field("media")[0]["url"],
+"btn_main" => array(
+// Use in component?
+"active" => true,
+// Array structure for btn component
+"link" => $apartament_link,
+"text" => __("Zarezerwuj<br>ten apartament", "oh-theme"),
+"class" => "apartament-make-reservation",
+"type" => "accent",
+"no_follow" => true,
+),
+)
+),
 ));
 ?>
+
+<input type="hidden"
+       value="<?php echo isset($_SESSION["searchDates"][0]) ? $_SESSION["searchDates"][0] : date('Y-m-d', strtotime($currentDate . ' +2 days'));  ?>"
+       name="searchDateFrom"
+       id="searchDateFrom">
+
+<input type="hidden"
+       value="<?php echo isset($_SESSION["searchDates"][1]) ? $_SESSION["searchDates"][1] : date('Y-m-d', strtotime($currentDate . ' +4 days'));  ?>"
+       name="searchDateTo"
+       id="searchDateTo">
+
 <section class="ido-gallery container">
     <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
          class="swiper mySwiper2 ido-gallery-swiper">

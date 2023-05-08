@@ -294,13 +294,21 @@ a {
 	&-social {
 		display: flex;
 		justify-content: flex-end;
+		a {
+			display: flex;
+			margin-left: 1rem;
+			flex-direction: column;
+			align-items: center;
+			svg {
+				margin-bottom: 0.5em;
+				fill: currentColor;
+			}
+		}
 		@media (max-width: 991px) {
 			justify-content: center;
-		}
-		a {
-			margin-left: 1rem;
-			svg {
-				fill: currentColor;
+			flex-wrap: wrap;
+			a {
+				margin-top: 1rem;
 			}
 		}
 	}

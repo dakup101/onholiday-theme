@@ -110,16 +110,31 @@ $shown_result = false;
 
 <?php get_template_part(THEME_CMP, "search-form", array("ido_cat" => $city, "ido_loc" => $term)); ?>
 <section class="container apartaments">
-    <?php $title = array(
-        "title" => __("Wybierz idealne miejsce na Twój wypoczynek", "oh-theme"),
-        "subtitle" => $city->name . " - " . $term->name,
-        "tag" => "h1",
-        "class" => "font-alt"
-    );
-    get_template_part(THEME_CMP_CMN, "text-title", $title) ?>
+
+    <?php
+	$title_content = !empty(get_field("apartaments_tax_title", $term)) ? get_field("apartaments_tax_title", $term) : __("Wybierz idealne miejsce na Twój wypoczynek", "oh-theme");
+	$title = array(
+		"title" => $title_content,
+		"subtitle" => "Wybrane dni: " . $dates[0] . " / " . $dates[1],
+		"tag" => "h1",
+		"class" => "font-alt"
+	);
+	get_template_part(THEME_CMP_CMN, "text-title", $title)
+	?>
+    <?php if (!empty(get_field("apartaments_tax_title_after", $term))) : ?>
+    <div class="apartaments-title-after">
+        <?php echo get_field("apartaments_tax_title_after", $term) ?>
+    </div>
+    <?php endif; ?>
+
     <div class="apartaments-inner">
         <aside class="apartaments-filters">
             <?php get_template_part(THEME_CMP, "apartaments-filters", array("items" => $query)) ?>
+            <?php get_template_part(THEME_CMP, "apartaments-filters-after", array(
+				"title" => get_field("apartaments_tax_left_title", $term),
+				"text" => get_field("apartaments_tax_left_text", $term),
+				"links" => get_field("apartaments_tax_left_links", $term)
+			)); ?>
         </aside>
         <?php if ($apartaments->have_posts()) : ?>
         <div class="apartaments-list">
@@ -137,7 +152,7 @@ $shown_result = false;
                     }
                 }
                 wp_reset_query();
-                ?>
+            ?>
         </div>
         <?php else : $shown_result = false; ?>
         <?php endif; ?>
@@ -150,10 +165,11 @@ $shown_result = false;
     </div>
 </section>
 <?php get_template_part(THEME_CMP, "icons-row") ?>
-<?php // get_template_part(THEME_CMP, "cta", get_field("cta")) 
-?>
-<?php // get_template_part(THEME_CMP, "info-right", get_field("info-right")) 
-?>
-<?php // get_template_part(THEME_CMP, "info-left", get_field("info-left")) 
-?>
+
+<?php if (!empty(get_field("apartaments_tax_desc", $term))): ?>
+<section class="container after-apartaments">
+    <?php echo get_field("apartaments_tax_desc", $term) ?>
+</section>
+<?php endif; ?>
+
 <?php get_template_part(THEME_CMP, "blog-grid", get_field("blog_grid_fields", "options")) ?>

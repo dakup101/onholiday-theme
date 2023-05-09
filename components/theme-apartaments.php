@@ -110,39 +110,32 @@ else get_template_part(THEME_CMP, "search-form");
        id="searchDateTo">
 
 <section class="container apartaments">
-    <?php if (isset($_POST["searchLocation"]) && !empty($_POST["searchLocation"])) : ?>
+
     <?php
+	$title_content = !empty(get_field("apartaments_tax_title", "options")) ? get_field("apartaments_tax_title", "options") : __("Wybierz idealne miejsce na Twój wypoczynek", "oh-theme");
 	$title = array(
-		"title" => __(" Wolne apartamenty w wybranym przez Ciebie terminie", "oh-theme"),
-		"subtitle" => null,
+		"title" => $title_content,
+		"subtitle" => "Wybrane dni: " . $dates[0] . " / " . $dates[1],
 		"tag" => "h1",
 		"class" => "font-alt"
 	);
-	$dates = explode(",", $_POST["searchDates"]);
-	if ($has_location) $title["subtitle"] = $dates[0] . " / " . $dates[1];
-	?>
-
-    <?php else: ?>
-
-    <?php
-	$title = array(
-		"title" => __("Wybierz idealne miejsce na Twój wypoczynek", "oh-theme"),
-		"subtitle" => $dates[0] . " / " . $dates[1],
-		"tag" => "h1",
-		"class" => "font-alt"
-	);
-	if ($has_location) $title["subtitle"] = get_term_by("slug", $location, "ido_category")->name;
-	?>
-
-
-    <?php endif; ?>
-
-    <?php
 	get_template_part(THEME_CMP_CMN, "text-title", $title)
 	?>
+    <?php if (!empty(get_field("apartaments_tax_title_after", "options"))) : ?>
+    <div class="apartaments-title-after">
+        <?php echo get_field("apartaments_tax_title_after", "options") ?>
+    </div>
+    <?php endif; ?>
+
     <div class="apartaments-inner">
         <aside class="apartaments-filters">
             <?php get_template_part(THEME_CMP, "apartaments-filters", array("items" => $query)) ?>
+            <?php get_template_part(THEME_CMP, "apartaments-filters-after", array(
+				"title" => get_field("apartaments_tax_left_title", "options"),
+				"text" => get_field("apartaments_tax_left_text", "options"),
+				"links" => get_field("apartaments_tax_left_links", "options")
+			)); ?>
+
         </aside>
         <?php if ($apartaments->have_posts()) : ?>
         <div class="apartaments-list">
@@ -172,11 +165,13 @@ else get_template_part(THEME_CMP, "search-form");
         <?php endif; ?>
     </div>
 </section>
+
 <?php get_template_part(THEME_CMP, "icons-row") ?>
-<?php // get_template_part(THEME_CMP, "cta", get_field("cta")) 
-?>
-<?php // get_template_part(THEME_CMP, "info-right", get_field("info-right")) 
-?>
-<?php // get_template_part(THEME_CMP, "info-left", get_field("info-left")) 
-?>
+
+<?php if (!empty(get_field("apartaments_tax_desc", "options"))): ?>
+<section class="container after-apartaments">
+    <?php echo get_field("apartaments_tax_desc", "options") ?>
+</section>
+<?php endif; ?>
+
 <?php get_template_part(THEME_CMP, "blog-grid", get_field("blog_grid_fields", "options")) ?>

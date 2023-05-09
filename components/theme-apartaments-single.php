@@ -1,17 +1,5 @@
 <?php
-// Widget Url with searchForm data
-
 $_SESSION["apartament"] = get_field("ido_id");
-
-// $ido = new IdoBooking_API;
-// $ido_avi = $ido->get_aviability($_SESSION["searchDates"][0], $_SESSION["searchDates"][1], $_SESSION["guests"])->offers;
-// $date_filtered_offers = array();
-// if (!empty($ido_avi)) {
-//     foreach ($ido_avi as $item) {
-//         $date_filtered_offers[$item->offerId] = $item->widgetUrl;
-//     }
-// }
-
 
 $lang = get_language_shortcode();
 $currentDate = date('Y-m-d');
@@ -24,8 +12,6 @@ $endDate = isset($_SESSION["searchDates"][1]) ? $_SESSION["searchDates"][1] : da
 if (!empty($_SESSION["searchDates"][0])) {
 	$apartament_link = "https://client8748.idosell.com/widget/booking/defaultchoice/" . "start_date/" . $startDate . "/end_date/" . $endDate . "/currency/1/language/" . $lang_iframe . "/persons-adult/" . $_SESSION["guests"] . "/?ob[" . $_SESSION["apartament"] . "]";
 } else $apartament_link = "https://client8748.idosell.com/widget2/index.php?ob[" . get_field("ido_id") . "]=&from_own_button=1&language=" . $lang_iframe;
-
-// echo $apartament_link;
 
 // Hero
 

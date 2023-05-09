@@ -17,6 +17,10 @@ function wp_get_menu_array($current_menu, $post_id): array
 
 			$is_megamenu = get_field('is_megamenu', $m);
 			$menu[$m->ID]['is_megamenu'] = $is_megamenu;
+
+			if (!empty(get_field("title", $m))){
+				$menu[$m->ID]['title_attr'] = get_field("title", $m);
+			}
 		}
 	}
 	$submenu = array();
@@ -33,6 +37,10 @@ function wp_get_menu_array($current_menu, $post_id): array
 			if ($is_megamenu) {
 				$submenu[$m->ID]['desc'] = get_field("desc", $m);
 				$submenu[$m->ID]['bg_img'] = get_field("bg_img", $m);
+			}
+
+			if (!empty(get_field("title", $m))){
+				$submenu[$m->ID]['title_attr'] = get_field("title", $m);
 			}
 
 			$menu[$m->menu_item_parent]['children'][$m->ID] = $submenu[$m->ID];

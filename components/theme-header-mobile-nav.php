@@ -16,8 +16,8 @@ $nav = wp_get_menu_array('primary', get_the_ID());
         $title_attr = isset($nav_item["title_attr"]) ? $nav_item["title_attr"] : "";
         ?>
         <?php if (!empty($title)) : ?>
-        <li class="<?php echo isset($children) ? 'has-children' : ''?>">
-            <a class="<?php echo isset($children) ? 'children-trigger' : ''?>"
+        <li class="<?php echo !empty($children) ? 'has-children' : ''?>">
+            <a class="<?php echo !empty($children) ? 'children-trigger' : ''?>"
                href="<?php echo $url; ?>"
                title="<?php echo $title_attr ?>">
                 <span>
@@ -47,9 +47,9 @@ $nav = wp_get_menu_array('primary', get_the_ID());
                         }
                     }
                     ?>
-                    <li class="<?php echo isset($child_children) ? "has-children" : "" ?>">
+                    <li class="<?php echo !empty($child_children) ? "has-children" : "" ?>">
                         <a href="<?php echo $child["url"] ?>"
-                           class="<?php echo isset($child_children)? "children-trigger" : "" ?>"
+                           class="<?php echo !empty($child_children)? "children-trigger" : "" ?>"
                            title="<?php echo isset($child["title_attr"]) ? $child["title_attr"] : "" ?>">
                             <span>
                                 <?php echo $child["title"] ?>

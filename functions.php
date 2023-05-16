@@ -37,6 +37,10 @@ require_once THEME_FUN . 'acf-options-page.php';
 require_once THEME_FUN . 'ajax-city-offer.php';
 require_once THEME_FUN . 'ajax-load-prices.php';
 
+// *** YOAST SEO *** //
+
+require_once THEME_FUN . 'yoast-bread-ido-loc.php';
+require_once THEME_FUN . 'yoast-bread-single-apartament.php';
 
 // *** IDO BOOKING *** //
 

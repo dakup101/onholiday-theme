@@ -6,7 +6,8 @@
     "btn_text" => "Wanna see more?",
 )) ?>
 
-<section class="blog-grid">
+<section class="blog-grid"
+         id="<?php echo !empty(get_field("section_blog_grid_id")) ? get_field("section_blog_grid_id") : "" ?>">
     <div class="container blog-grid-desc">
         <?php get_template_part(THEME_CMP_CMN, "text-title", array(
             "title" => $blog_grid["title"],
@@ -26,11 +27,11 @@
     $blog = new WP_Query($args);
     if ($blog->have_posts()) :
     ?>
-        <div class="container blog-grid-inner">
-            <?php while ($blog->have_posts()) : $blog->the_post(); ?>
-                <?php get_template_part(THEME_CMP, "blog-grid-item") ?>
-            <?php endwhile; ?>
-        </div>
+    <div class="container blog-grid-inner">
+        <?php while ($blog->have_posts()) : $blog->the_post(); ?>
+        <?php get_template_part(THEME_CMP, "blog-grid-item") ?>
+        <?php endwhile; ?>
+    </div>
     <?php endif;
     wp_reset_postdata(); ?>
     <?php get_template_part(THEME_CMP_CMN, "btn", array(

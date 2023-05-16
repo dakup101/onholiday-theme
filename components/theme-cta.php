@@ -24,7 +24,8 @@
     "bg_img" => THEME_IMG . "hero-default.jpg",
     "bg_video" => THEME_VID . "sea.mp4"
 )) ?>
-<section class="hero cta">
+<section class="hero cta"
+         id="<?php echo !empty(get_field("section_cta_id")) ? get_field("section_cta_id") : "" ?>">
     <article class="hero-wrapper cta-wrapper">
         <main class="hero-inner container">
             <h2 class="hero-title font-alt">
@@ -38,23 +39,31 @@
             $btn_additional = $cta["btn_additional"];
             if ($btn_main["active"] || $btn_additional["active"]) :
             ?>
-                <div class="hero-btns">
-                    <?php
+            <div class="hero-btns">
+                <?php
                     if ($btn_additional['active']) get_template_part(THEME_CMP_CMN, "btn", $btn_additional);
                     if ($btn_main['active']) get_template_part(THEME_CMP_CMN, "btn", $btn_main);
                     ?>
-                </div>
+            </div>
             <?php endif; ?>
         </main>
 
         <figure class="hero-bg">
             <?php if ($cta["bg_img"] && !$cta["bg_video"]) : ?>
-                <img src="<?php echo $cta["bg_img"] ?>" alt="<?php echo $cta["title"] ?>" class="hero-bg-img" loading="lazy">
+            <img src="<?php echo $cta["bg_img"] ?>"
+                 alt="<?php echo $cta["title"] ?>"
+                 class="hero-bg-img"
+                 loading="lazy">
             <?php endif; ?>
             <?php if ($cta["bg_video"]) : ?>
-                <video class="hero-bg-video lazy" autoplay loop muted poster="<?php echo $cta["bg_img"]; ?>">
-                    <source data-src="<?php echo $cta["bg_video"]; ?>" type="video/mp4">
-                </video>
+            <video class="hero-bg-video lazy"
+                   autoplay
+                   loop
+                   muted
+                   poster="<?php echo $cta["bg_img"]; ?>">
+                <source data-src="<?php echo $cta["bg_video"]; ?>"
+                        type="video/mp4">
+            </video>
             <?php endif; ?>
         </figure>
         <figure class="hero-overlay"></figure>

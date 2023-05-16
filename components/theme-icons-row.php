@@ -1,4 +1,5 @@
-<section class="icons-row">
+<section class="icons-row"
+         id="<?php echo !empty(get_field("section_icons_row_id")) ? get_field("section_icons_row_id") : "" ?>">
     <div class="container">
         <div class="icons-row-wrapper">
             <?php foreach(get_field("icons_row", "options") as $icon): ?>

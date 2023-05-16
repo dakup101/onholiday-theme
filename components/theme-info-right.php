@@ -6,10 +6,12 @@
     "btn_link" => "#",
     "btn_text" => "Wanna see more?"
 )) ?>
-<section class="info-section right">
+<section class="info-section right"
+         id="<?php echo !empty(get_field("p")) ? get_field("section_info_right_id") : "" ?>">
     <article class="container info-section-inner">
         <figure class="info-section-img">
-            <img src="<?php echo $info["img"] ?>" alt="<?php echo $info["title"] ?>">
+            <img src="<?php echo $info["img"] ?>"
+                 alt="<?php echo $info["title"] ?>">
         </figure>
         <main class="info-section-content">
             <?php get_template_part(THEME_CMP_CMN, "text-title", array(
@@ -22,7 +24,7 @@
                 <?php echo $info["text"] ?>
             </div>
             <?php if ($info["btn_link"]) : ?>
-                <?php get_template_part(THEME_CMP_CMN, "btn", array(
+            <?php get_template_part(THEME_CMP_CMN, "btn", array(
                     "link" => $info["btn_link"],
                     "text" => $info["btn_text"],
                     "class" => "btn-content",

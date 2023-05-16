@@ -18,7 +18,7 @@
 </section>
 
 <?php foreach (get_field("galleries") as $galleries) : ?>
-<section id="<?php echo !empty(get_field("section_id")) ? get_field("section_id") : "" ?>">
+<section id="<?php echo !empty($galleries["section_id"]) ? $galleries["section_id"] : "" ?>">
     <div class="container">
         <?php get_template_part(THEME_CMP_CMN, "text-title", array(
                 "title" => $galleries["title"],

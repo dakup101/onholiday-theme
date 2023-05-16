@@ -13,7 +13,8 @@ get_template_part(THEME_CMP, "hero", array(
 // Search Form
 get_template_part(THEME_CMP, "search-form");
 ?>
-<section class="container about-kolobrzeg">
+<section class="container about-kolobrzeg"
+         id="<?php echo !empty(get_field("section_city_about_id")) ? get_field("section_city_about_id") : "" ?>">
     <?php get_template_part(THEME_CMP_CMN, "text-title", array(
         "title" => get_field("title"),
         "subtitle" => get_field("subtitle"),
@@ -92,8 +93,11 @@ get_template_part(THEME_CMP, "search-form");
 <?php get_template_part(THEME_CMP, "cta", get_field("cta")) ?>
 <?php get_template_part(THEME_CMP, "info-right", get_field("info-right")) ?>
 <?php get_template_part(THEME_CMP, "info-left", get_field("info-left")) ?>
+
 <?php get_template_part(THEME_CMP, "blog-grid", get_field("blog_grid_fields", "options")) ?>
+
 <div class="container summary-wrapper">
     <?php get_template_part(THEME_CMP, "summary", get_field("summary")) ?>
 </div>
+
 <?php get_footer(); ?>

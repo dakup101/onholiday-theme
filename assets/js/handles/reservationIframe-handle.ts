@@ -1,7 +1,5 @@
-export default function searchFormHandle() {
-	const target = document.querySelector(".search-from");
-
-	if (target) return;
+export default function reservationFrameHandle() {
+	const target = document.querySelector(".apartament-make-reservation");
 
 	const observerOpts = {
 		root: null,
@@ -12,12 +10,12 @@ export default function searchFormHandle() {
 	const observer = new IntersectionObserver((entries, observer) => {
 		entries.forEach((entry) => {
 			if (entry.isIntersecting) {
-				import(/* webpackChunkName: "print" */ "../inits/searchForm").then(
-					(module) => {
-						const action = module.default;
-						action();
-					}
-				);
+				import(
+					/* webpackChunkName: "print" */ "../inits/reservationIframe"
+				).then((module) => {
+					const action = module.default;
+					action();
+				});
 				observer.unobserve(target);
 			}
 		});

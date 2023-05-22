@@ -1,7 +1,5 @@
-export default function searchFormHandle() {
-	const target = document.querySelector(".search-from");
-
-	if (target) return;
+export default function getPricesHandle() {
+	const target = document.querySelector(".apartaments-item");
 
 	const observerOpts = {
 		root: null,
@@ -12,7 +10,7 @@ export default function searchFormHandle() {
 	const observer = new IntersectionObserver((entries, observer) => {
 		entries.forEach((entry) => {
 			if (entry.isIntersecting) {
-				import(/* webpackChunkName: "print" */ "../inits/searchForm").then(
+				import(/* webpackChunkName: "print" */ "../inits/getPrices").then(
 					(module) => {
 						const action = module.default;
 						action();

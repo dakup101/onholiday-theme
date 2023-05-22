@@ -1,7 +1,5 @@
-export default function searchFormHandle() {
-	const target = document.querySelector(".search-from");
-
-	if (target) return;
+export default function onClickToBookingHandle() {
+	const target = document.querySelector(".move-to-search");
 
 	const observerOpts = {
 		root: null,
@@ -12,12 +10,12 @@ export default function searchFormHandle() {
 	const observer = new IntersectionObserver((entries, observer) => {
 		entries.forEach((entry) => {
 			if (entry.isIntersecting) {
-				import(/* webpackChunkName: "print" */ "../inits/searchForm").then(
-					(module) => {
-						const action = module.default;
-						action();
-					}
-				);
+				import(
+					/* webpackChunkName: "print" */ "../inits/onClickToBooking"
+				).then((module) => {
+					const action = module.default;
+					action();
+				});
 				observer.unobserve(target);
 			}
 		});

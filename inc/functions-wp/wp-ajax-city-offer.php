@@ -13,6 +13,13 @@ function return_city_offer(){
 }
 
 function city_offer_content($page_id){
+    $city_oofer = get_field("aps_start", $page_id);
+    $city_ids = array();
+
+    foreach($city_oofer as $offer) {
+        array_push($city_ids, $offer["id"]);
+    }
+
 ob_start() ?>
 
 <?php 
@@ -20,7 +27,6 @@ $kolobrzeg_items = new WP_Query( array(
     "post_type" => "ido-apartaments",
     "status" => "publish",
     "posts_per_page" => -1,
-    "offset" => 8,
     'orderby' => 'menu_order',
     'order' => 'DESC',
     "tax_query" => array(
@@ -33,6 +39,7 @@ $kolobrzeg_items = new WP_Query( array(
 ));
 if ($kolobrzeg_items->have_posts()): ?>
 <?php while ($kolobrzeg_items->have_posts()): $kolobrzeg_items->the_post(); ?>
+<?php if (in_array(get_the_ID(), $city_ids)) continue; ?>
 <article class="apartament-list-item">
     <a href="<?php echo get_the_permalink() ?>"
        class="apartament-list-item-inner">
@@ -40,7 +47,7 @@ if ($kolobrzeg_items->have_posts()): ?>
             <?php echo get_the_title() ?>
         </div>
         <span class="apartament-list-item-link">
-            <?php echo __("Sprawdź szczegóły", "oh-theme") ?>
+            <?php echo __("Sprawdź", "oh-theme") ?>
         </span>
     </a>
     <figure class="apartament-list-item-bg">

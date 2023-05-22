@@ -3,14 +3,14 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-export default function offerSlider(){
-    const swiper = new Swiper(".offer-slider", {
-        modules: [Navigation, Pagination, Autoplay],
-        preloadImages: false,
+export default function offerSlider() {
+	const swiper = new Swiper(".offer-slider", {
+		modules: [Navigation, Pagination, Autoplay],
+		preloadImages: false,
 		lazy: true,
 		autoHeight: true,
 		effect: "fade",
-        slidesPerView: 5,
+		slidesPerView: 6,
 		speed: 500,
 		autoplay: {
 			delay: 4000,
@@ -34,11 +34,11 @@ export default function offerSlider(){
 				slidesPerView: 3,
 			},
 			1240: {
-				slidesPerView: 4,
+				slidesPerView: 5,
 			},
 			1440: {
-				slidesPerView: 5,
-			}
-		}
-    })
+				slidesPerView: 6,
+			},
+		},
+	});
 }

@@ -9,7 +9,7 @@
             $second_item = $links[1];
             $modified_item = array(
                 'url' => 'https://onholiday.com.pl/apartamenty-w-kolobrzegu/',
-                'text' => 'Apartamenty w Kołobrzegu &#8211; Tu się Odpoczywa i Bawi!',
+                'text' => 'Kołobrzeg Apartamenty',
             );
             $links[1] = $modified_item;
         }

@@ -137,8 +137,9 @@ else get_template_part(THEME_CMP, "search-form");
 			)); ?>
 
         </aside>
-        <?php if ($apartaments->have_posts()) : ?>
         <div class="apartaments-list">
+            <?php if ($apartaments->have_posts()) : ?>
+
             <?php
 			while ($apartaments->have_posts()) {
 				$apartaments->the_post();
@@ -154,15 +155,16 @@ else get_template_part(THEME_CMP, "search-form");
 			}
 			wp_reset_query();
 			?>
+            <?php else : $shown_result = false; ?>
+            <?php endif; ?>
+            <?php if (!$shown_result) : ?>
+            <div class="apartaments-no-items">
+                <strong><?php echo __("Brak dostępnych apartamentów", "oh-theme") ?></strong>
+                <span><?php echo __("Spróbuj wybrać inną datę / udogodnienia", "oh-theme") ?></span>
+            </div>
+            <?php endif; ?>
         </div>
-        <?php else : $shown_result = false; ?>
-        <?php endif; ?>
-        <?php if (!$shown_result) : ?>
-        <div class="apartaments-no-items">
-            <strong><?php echo __("Brak dostępnych apartamentów", "oh-theme") ?></strong>
-            <span><?php echo __("Spróbuj wybrać inną datę / udogodnienia", "oh-theme") ?></span>
-        </div>
-        <?php endif; ?>
+
     </div>
 </section>
 

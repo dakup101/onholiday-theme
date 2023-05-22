@@ -136,8 +136,9 @@ $shown_result = false;
 				"links" => get_field("apartaments_tax_left_links", $term)
 			)); ?>
         </aside>
-        <?php if ($apartaments->have_posts()) : ?>
+
         <div class="apartaments-list">
+            <?php if ($apartaments->have_posts()) : ?>
             <?php
                 while ($apartaments->have_posts()) {
                     $apartaments->the_post();
@@ -153,15 +154,15 @@ $shown_result = false;
                 }
                 wp_reset_query();
             ?>
+            <?php else : $shown_result = false; ?>
+            <?php endif; ?>
+            <?php if (!$shown_result) : ?>
+            <div class="apartaments-no-items">
+                <strong><?php echo __("Brak dostępnych apartamentów", "oh-theme") ?></strong>
+                <span><?php echo __("Spróbuj wybrać inną datę / udogodnienia", "oh-theme") ?></span>
+            </div>
+            <?php endif; ?>
         </div>
-        <?php else : $shown_result = false; ?>
-        <?php endif; ?>
-        <?php if (!$shown_result) : ?>
-        <div class="apartaments-no-items">
-            <strong><?php echo __("Brak dostępnych apartamentów", "oh-theme") ?></strong>
-            <span><?php echo __("Spróbuj wybrać inną datę / udogodnienia", "oh-theme") ?></span>
-        </div>
-        <?php endif; ?>
     </div>
 </section>
 <?php get_template_part(THEME_CMP, "icons-row") ?>

@@ -91,10 +91,36 @@ get_template_part(THEME_CMP, "search-form");
 </section>
 <?php get_template_part(THEME_CMP, "icons-row") ?>
 <?php get_template_part(THEME_CMP, "cta", get_field("cta")) ?>
-<?php get_template_part(THEME_CMP, "info-right", get_field("info-right")) ?>
-<?php get_template_part(THEME_CMP, "info-left", get_field("info-left")) ?>
+
+<?php 
+$info_right = get_field("info-right"); 
+$info_right["id"] = null;
+if (!empty(get_field("section_info_right_id"))){
+    $info_right["id"] = get_field("section_info_right_id");
+}
+?>
+
+<?php get_template_part(THEME_CMP, "info-right", $info_right) ?>
+
+<?php 
+$info_left = get_field("info-left"); 
+$info_left["id"] = null;
+if (!empty(get_field("section_info_left_id"))){
+    $info_left["id"] = get_field("section_info_left_id");
+}
+?>
+
+<?php get_template_part(THEME_CMP, "info-left", $info_left) ?>
+
+<?php foreach(get_field("info-left-right") as $key=>$el) : ?>
+
+<?php if ($key%2==0 || $key==0) get_template_part(THEME_CMP, "info-right", $el["info"]);
+else  get_template_part(THEME_CMP, "info-left", $el["info"]) ?>
+
+<?php endforeach; ?>
 
 <?php get_template_part(THEME_CMP, "blog-grid", get_field("blog_grid_fields", "options")) ?>
+
 
 <div class="container summary-wrapper">
     <?php get_template_part(THEME_CMP, "summary", get_field("summary")) ?>

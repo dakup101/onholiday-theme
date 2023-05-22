@@ -24,6 +24,14 @@
         "posts_per_page" => 4,
         "paged" => 1,
     );
+
+    if (!empty(get_field("selected_blog_posts"))) {
+        $args["post__in"] = array();
+        foreach (get_field("selected_blog_posts") as $key => $value) {
+            $args["post__in"][] = $value["id"];
+        }
+    }
+
     $blog = new WP_Query($args);
     if ($blog->have_posts()) :
     ?>

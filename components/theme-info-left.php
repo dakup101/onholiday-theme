@@ -4,10 +4,11 @@
     "text" => "I am text content.",
     "img" => THEME_IMG . "hero-default.jpg",
     "btn_link" => "#",
-    "btn_text" => "Wanna see more?"
+    "btn_text" => "Wanna see more?",
+    "id" => null
 )) ?>
 <section class="info-section left"
-         id="<?php echo !empty(get_field("section_info_left_id")) ? get_field("section_info_left_id") : "" ?>">
+         id="<?php echo !empty($info["id"]) ? $info["id"] : "" ?>">
     <article class="container info-section-inner">
         <main class="info-section-content">
             <?php get_template_part(THEME_CMP_CMN, "text-title", array(

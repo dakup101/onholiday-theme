@@ -4,10 +4,11 @@
     "text" => "I am text content.",
     "img" => THEME_IMG . "hero-default.jpg",
     "btn_link" => "#",
-    "btn_text" => "Wanna see more?"
+    "btn_text" => "Wanna see more?",
+    "id" => null
 )) ?>
 <section class="info-section right"
-         id="<?php echo !empty(get_field("p")) ? get_field("section_info_right_id") : "" ?>">
+         id="<?php echo !empty($info["id"]) ? $info["id"] : "" ?>">
     <article class="container info-section-inner">
         <figure class="info-section-img">
             <img src="<?php echo $info["img"] ?>"

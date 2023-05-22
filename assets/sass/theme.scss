@@ -1,3 +1,4 @@
+@import "./sub/typo";
 @import "./sub/variables";
 
 * {
@@ -547,14 +548,14 @@ a {
 	margin: 3rem 0;
 	display: grid;
 	gap: 2rem;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: repeat(5, 1fr);
 	&-more {
 		grid-column: 1/5;
 		display: flex;
 		justify-content: center;
 	}
 	@media (max-width: 1240px) {
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(4, 1fr);
 		&-more {
 			grid-column: 1/4;
 		}

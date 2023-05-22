@@ -25,43 +25,29 @@ get_template_part(THEME_CMP, "search-form");
     </div>
 
 
-    <?php $kolobrzeg_items = new WP_Query( array(
-            "post_type" => "ido-apartaments",
-            "status" => "publish",
-            "posts_per_page" => 8,
-            'orderby' => 'menu_order',
-            'order' => 'DESC',
-            "tax_query" => array(
-                array(
-                    "taxonomy" => "ido_category",
-                    "field" => "slug",
-                    "terms" => get_the_ID() == 369 ? "kolobrzeg" : "swieradow-zdroj",
-                )
-            )
-        ) );
+    <?php $city_offer = get_field("aps_start"); if (!empty($city_offer)) : ?>
 
-    if ($kolobrzeg_items->have_posts()): ?>
+
     <div class="city-offer">
-        <?php while ($kolobrzeg_items->have_posts()): $kolobrzeg_items->the_post(); ?>
+        <?php foreach($city_offer as $offer_id): ?>
         <article class="apartament-list-item">
-            <a href="<?php echo get_the_permalink() ?>"
+            <a href="<?php echo get_the_permalink($offer_id["id"]) ?>"
                class="apartament-list-item-inner">
                 <div class="apartament-list-item-name">
-                    <?php echo get_the_title() ?>
+                    <?php echo get_the_title($offer_id["id"]) ?>
                 </div>
                 <span class="apartament-list-item-link">
                     <?php echo __("Sprawdź szczegóły", "oh-theme") ?>
                 </span>
             </a>
             <figure class="apartament-list-item-bg">
-                <img src="<?php echo get_field("media")[0]["url"] ?>"
-                     alt="<?php echo get_the_title()  ?>"
+                <img src="<?php echo get_field("media", $offer_id["id"])[0]["url"] ?>"
+                     alt="<?php echo get_the_title($offer_id["id"])  ?>"
                      loading="lazy">
                 <div class="overlay"></div>
-
             </figure>
         </article>
-        <?php endwhile; wp_reset_postdata() ?>
+        <?php endforeach; ?>
         <div class="city-offer-more">
             <?php get_template_part(THEME_CMP_CMN, "btn", array(
                 "link" => null,

@@ -47,13 +47,15 @@ get_template_part(THEME_CMP, "search-form");
                                     <?php echo get_the_title() ?>
                                 </div>
                                 <span class="apartament-list-item-link">
-                                    <?php echo __("Sprawdź szczegóły", "oh-theme") ?>
+                                    <?php echo __("Sprawdź", "oh-theme") ?>
                                 </span>
                             </a>
-                            <figure class="apartament-list-item-bg">
-                                <img src="<?php echo get_field("media")[0]["url"] ?>"
+                            <?php $ap_img = str_replace("/large/", "/small/", get_field("media")[0]["url"]) ?>
+                            <figure class="apartament-list-item-bg"
+                                    style="background-image: url('<?php echo $ap_img ?>'); background-size: cover">
+                                <!-- <img src=""
                                      alt="<?php echo get_the_title()  ?>"
-                                     loading="lazy">
+                                     loading="lazy"> -->
                                 <div class="overlay"></div>
 
                             </figure>

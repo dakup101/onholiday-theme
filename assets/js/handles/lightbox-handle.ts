@@ -1,7 +1,7 @@
 export default function lightboxHandle() {
 	const target = document.querySelector(".glightbox");
 
-	if (target) return;
+	if (!target) return;
 
 	const observerOpts = {
 		root: null,

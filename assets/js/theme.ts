@@ -15,10 +15,11 @@ import mobileMenuHandle from "./handles/mobileMenu-handle";
 import onClickToBookingHandle from "./handles/onClickToBookign-handle";
 import reservationFrameHandle from "./handles/reservationIframe-handle";
 
+lazyVideoObserverHandle();
+
 window.addEventListener("DOMContentLoaded", () => {
 	selectHandle();
 	megamenuHandle();
-	lazyVideoObserverHandle();
 	swiperHeroHandle();
 	apartamentGalleryHadnle();
 	apartamentCollapnseHandle();
@@ -31,7 +32,6 @@ window.addEventListener("DOMContentLoaded", () => {
 	mobileMenuHandle();
 	onClickToBookingHandle();
 	reservationFrameHandle();
-
 	document.addEventListener("scroll", () => {
 		stickyHeaderHandle();
 	});

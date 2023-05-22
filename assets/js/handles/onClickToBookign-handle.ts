@@ -1,6 +1,8 @@
 export default function onClickToBookingHandle() {
 	const target = document.querySelector(".move-to-search");
 
+	if (!target) return;
+
 	const observerOpts = {
 		root: null,
 		rootMargin: "-150px 0px 150px 0px",

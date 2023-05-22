@@ -1,7 +1,7 @@
 export default function stickyHeaderHandle() {
 	const target = document.querySelector("header");
 
-	if (target) return;
+	if (!target) return;
 
 	const observerOpts = {
 		root: null,

@@ -1,7 +1,7 @@
 export default function offerSliderHandle() {
 	const target = document.querySelector(".offer-slider");
 
-	if (target) return;
+	if (!target) return;
 
 	const observerOpts = {
 		root: null,

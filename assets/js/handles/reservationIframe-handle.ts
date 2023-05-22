@@ -1,6 +1,8 @@
 export default function reservationFrameHandle() {
 	const target = document.querySelector(".apartament-make-reservation");
 
+	if (!target) return;
+
 	const observerOpts = {
 		root: null,
 		rootMargin: "-150px 0px 150px 0px",

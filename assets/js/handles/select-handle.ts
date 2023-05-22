@@ -1,7 +1,7 @@
 export default function selectHandle() {
 	const target = document.querySelector(".select");
 
-	if (target) return;
+	if (!target) return;
 
 	const observerOpts = {
 		root: null,

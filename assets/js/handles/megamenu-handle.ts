@@ -1,11 +1,11 @@
 export default function megamenuHandle() {
 	const target = document.querySelector(".header-nav-item-has-children");
 
-	if (target) return;
+	if (!target) return;
 
 	const observerOpts = {
 		root: null,
-		rootMargin: "-150px 0px 150px 0px",
+		rootMargin: "0px",
 		threshold: 0,
 	};
 

@@ -1,7 +1,7 @@
 export default function apartamentGalleryHadnle() {
 	const target = document.querySelector(".ido-gallery");
 
-	if (target) return;
+	if (!target) return;
 
 	const observerOpts = {
 		root: null,

@@ -1,11 +1,11 @@
 export default function searchFormHandle() {
-	const target = document.querySelector(".search-from");
+	const target = document.querySelector(".search-form");
 
-	if (target) return;
+	if (!target) return;
 
 	const observerOpts = {
 		root: null,
-		rootMargin: "-150px 0px 150px 0px",
+		rootMargin: "0px",
 		threshold: 0,
 	};
 

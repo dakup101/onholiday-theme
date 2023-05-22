@@ -1,6 +1,8 @@
 export default function mobileMenuHandle() {
 	const target = document.querySelector(".mobile-nav-menu");
 
+	if (!target) return;
+
 	const observerOpts = {
 		root: null,
 		rootMargin: "-150px 0px 150px 0px",

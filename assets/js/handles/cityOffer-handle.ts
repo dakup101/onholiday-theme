@@ -1,6 +1,8 @@
 export default function cityOfferHandle() {
 	const target = document.querySelector(".city-offer-btn");
 
+	if (!target) return;
+
 	const observerOpts = {
 		root: null,
 		rootMargin: "-150px 0px 150px 0px",

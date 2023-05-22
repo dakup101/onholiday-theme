@@ -33,27 +33,9 @@
             get_template_part(THEME_CMP_CMN, "select", $select);
             ?>
         </div>
-        <script>
-        let searchbutton = document.getElementById("item-search-start");
-        searchbutton.addEventListener("click", function(e) {
-            Array.from(document.querySelectorAll('.search-form-item-next')).forEach(function(el) {
-                el.classList.remove('search-form-item-next');
-            });
 
-            // let currentObjects = document.getElementsByClassName('search-form-item-next');
-            // if(typeof(currentObjects)=='undefined') {return;}
-            // if(currentObjects.length > 0) {
-
-
-            //     for(let si = 0; si < currentObjects.length; si++) {
-            //         let tsObj = currentObjects[si];
-            //         tsObj.classList.remove('search-form-item-next');
-            //     }
-            // }
-        }, false);
-        </script>
         <!-- Date -->
-        <div class="search-form-item search-date search-form-item-next">
+        <div class="search-form-item search-date ">
             <input type="hidden"
                    name="dates"
                    id="dates"
@@ -93,7 +75,7 @@
             </label>
         </div>
         <!-- People -->
-        <div class="search-form-item search-form-item-next">
+        <div class="search-form-item ">
             <?php
             echo get_template_part(THEME_CMP_CMN, "select", array(
                 "name" => "people",
@@ -116,7 +98,7 @@
             ?>
         </div>
         <!-- Addons -->
-        <div class="search-form-item search-form-item-next">
+        <div class="search-form-item ">
             <?php
             $addons = get_terms(array(
                 'taxonomy' => 'ido_amen', //i guess campaign_action  is your  taxonomy 
@@ -146,7 +128,7 @@
 
         $action_url = __("/apartamenty/", "oh-theme");
         ?>
-        <form class="search-form-item search-backend search-form-item-next"
+        <form class="search-form-item search-backend "
               action="<?php echo $action_url ?><?php if ($args["ido_loc"]) echo $args["ido_loc"]->slug . "/" ?>"
               method="POST">
             <input type="hidden"

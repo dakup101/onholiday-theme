@@ -1,5 +1,5 @@
-export default function stickyHeaderHandle() {
-	const target = document.querySelector("header");
+export default function mobileMenuHandle() {
+	const target = document.querySelector(".mobile-nav-menu");
 
 	if (!target) return;
 
@@ -12,7 +12,7 @@ export default function stickyHeaderHandle() {
 	const observer = new IntersectionObserver((entries, observer) => {
 		entries.forEach((entry) => {
 			if (entry.isIntersecting) {
-				import(/* webpackChunkName: "print" */ "../inits/stickyHeader").then(
+				import(/* webpackChunkName: "print" */ "../inits/mobileMenu").then(
 					(module) => {
 						const action = module.default;
 						action();

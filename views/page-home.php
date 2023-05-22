@@ -79,34 +79,21 @@ get_template_part(THEME_CMP, "search-form");
     <div class="home-cards">
         <div class="home-cards-column">
             <?php get_template_part(THEME_CMP, "info-cards", get_field("cards")) ?>
-            <form action="<?php echo __("/apartamenty/", "oh-theme"); ?>"
-                  method="POST">
-                <input type="hidden"
-                       name="searchLocation"
-                       value="kolobrzeg">
-                <?php get_template_part(THEME_CMP_CMN, "btn", array(
-                    "link" => null,
-                    "text" => __("Apartamenty w Kołobrzegu", "oh-theme"),
-                    "class" => "search-form-action btn-content",
-                    "type" => "accent",
-                )) ?>
-            </form>
+            <?php get_template_part(THEME_CMP_CMN, "btn", array(
+                "link" => __("/apartamenty-w-kolobrzegu/", "oh-theme"),
+                "text" => __("Apartamenty w Kołobrzegu", "oh-theme"),
+                "class" => "search-form-action btn-content",
+                "type" => "accent",
+            )) ?>
         </div>
         <div class="home-cards-column">
             <?php get_template_part(THEME_CMP, "info-cards", get_field("cards_extra")) ?>
-
-            <form action="<?php echo __("/apartamenty/", "oh-theme"); ?>"
-                  method="POST">
-                <input type="hidden"
-                       name="searchLocation"
-                       value="swieradow-zdroj">
-                <?php get_template_part(THEME_CMP_CMN, "btn", array(
-                    "link" => null,
-                    "text" => __("Apartamenty w Świeradowie-Zdroju", "oh-theme"),
-                    "class" => "search-form-action btn-content",
-                    "type" => "accent",
-                )) ?>
-            </form>
+            <?php get_template_part(THEME_CMP_CMN, "btn", array(
+                "link" => __("/apartamenty-w-swieradowie-zdroju/", "oh-theme"),
+                "text" => __("Apartamenty w Świeradowie-Zdroju", "oh-theme"),
+                "class" => "search-form-action btn-content",
+                "type" => "accent",
+            )) ?>
         </div>
     </div>
 </section>

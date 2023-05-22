@@ -1,9 +1,12 @@
 export default function lazyVideoObserverHandle() {
-	if (!document.querySelectorAll("video.lazy")) return;
+	const target = document.querySelector("video.lazy");
+
+	if (!target) return;
+
 	import(/* webpackChunkName: "print" */ "../inits/lazyVideoObserver").then(
 		(module) => {
-			const initImported = module.default;
-			initImported();
+			const action = module.default;
+			action();
 		}
 	);
 }

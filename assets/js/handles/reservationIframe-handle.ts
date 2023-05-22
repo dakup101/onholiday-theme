@@ -1,5 +1,5 @@
-export default function stickyHeaderHandle() {
-	const target = document.querySelector("header");
+export default function reservationFrameHandle() {
+	const target = document.querySelector(".apartament-make-reservation");
 
 	if (!target) return;
 
@@ -12,12 +12,12 @@ export default function stickyHeaderHandle() {
 	const observer = new IntersectionObserver((entries, observer) => {
 		entries.forEach((entry) => {
 			if (entry.isIntersecting) {
-				import(/* webpackChunkName: "print" */ "../inits/stickyHeader").then(
-					(module) => {
-						const action = module.default;
-						action();
-					}
-				);
+				import(
+					/* webpackChunkName: "print" */ "../inits/reservationIframe"
+				).then((module) => {
+					const action = module.default;
+					action();
+				});
 				observer.unobserve(target);
 			}
 		});

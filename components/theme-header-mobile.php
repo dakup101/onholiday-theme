@@ -30,8 +30,7 @@
                 Zadzwoń
             </span>
         </a>
-        <a href="/apartamenty"
-           class="mobile-nav-item">
+        <button class="mobile-nav-item move-to-search">
             <figure class="mobile-nav-icon">
                 <svg xmlns="http://www.w3.org/2000/svg"
                      width="24"
@@ -44,7 +43,7 @@
             <span class="mobile-nav-desc">
                 Rezerwuj
             </span>
-        </a>
+        </button>
         <button class="mobile-nav-item mobile-menu-trigger">
             <figure class="mobile-nav-icon">
                 <svg xmlns="http://www.w3.org/2000/svg"

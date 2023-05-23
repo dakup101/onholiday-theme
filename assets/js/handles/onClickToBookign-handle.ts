@@ -5,7 +5,7 @@ export default function onClickToBookingHandle() {
 
 	const observerOpts = {
 		root: null,
-		rootMargin: "-150px 0px 150px 0px",
+		rootMargin: "0px",
 		threshold: 0,
 	};
 

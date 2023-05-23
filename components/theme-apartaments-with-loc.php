@@ -74,10 +74,7 @@ if ($has_date) {
 	$guests = $_POST["searchGuests"];
 }
 else {
-	$dates = array(
-		date('Y-m-d', strtotime($currentDate . ' +2 days')),
-		date('Y-m-d', strtotime($currentDate . ' +4 days'))
-	);
+	$dates = array();
 	$guests = $_POST["searchGuests"];
 }
 
@@ -97,6 +94,7 @@ $apartaments = new WP_Query($args);
 $shown_result = false;
 ?>
 
+<?php if(!empty($dates)) : ?>
 
 <input type="hidden"
        value="<?php echo isset($dates[0]) ? $dates[0] : date('Y-m-d', strtotime($currentDate . ' +2 days'));  ?>"
@@ -107,6 +105,7 @@ $shown_result = false;
        value="<?php echo isset($dates[1]) ? $dates[1] : date('Y-m-d', strtotime($currentDate . ' +4 days')); ?>"
        name="searchDateTo"
        id="searchDateTo">
+<?php endif; ?>
 
 <?php get_template_part(THEME_CMP, "search-form", array("ido_cat" => $city, "ido_loc" => $term)); ?>
 <section class="container apartaments">
@@ -115,7 +114,7 @@ $shown_result = false;
 	$title_content = !empty(get_field("apartaments_tax_title", $term)) ? get_field("apartaments_tax_title", $term) : __("Wybierz idealne miejsce na Twój wypoczynek", "oh-theme");
 	$title = array(
 		"title" => $title_content,
-		"subtitle" => "Wybrane dni: " . $dates[0] . " / " . $dates[1],
+		"subtitle" => !empty($dates) ? "Wybrane dni: " . $dates[0] . " / " . $dates[1] : null,
 		"tag" => "h1",
 		"class" => "font-alt"
 	);
@@ -144,11 +143,11 @@ $shown_result = false;
                     $apartaments->the_post();
                     if (!empty($date_filtered_offers)) {
                         if (in_array(get_field('ido_id'), $date_filtered_offers)) {
-                            get_template_part(THEME_CMP, "apartaments-item");
+                            get_template_part(THEME_CMP, "apartaments-item", array("dates" => $dates));
                             $shown_result = true;
                         }
                     } else {
-                        get_template_part(THEME_CMP, "apartaments-item");
+                        get_template_part(THEME_CMP, "apartaments-item", array("dates" => $dates));
                         $shown_result = true;
                     }
                 }

@@ -1,4 +1,5 @@
-<?php $terms = get_the_terms(get_the_ID(), 'ido_loc'); ?>
+<?php $terms = get_the_terms(get_the_ID(), 'ido_loc'); 
+$args = wp_parse_args( $args, array("dates"=> array()) )?>
 <article class="apartaments-item"
          data-objectId="<?php echo get_field("ido_id"); ?>"
          data-loc="<?= $terms[0]->term_id ?>">
@@ -15,10 +16,12 @@
             <?php echo get_field("desc_short") ?>
         </div>
         <div class="apartaments-item-bottom">
+            <?php if(!empty($args["dates"])) : ?>
             <span class="apartaments-item-price-wrap">
                 <?php echo __("Cena w wybranym okresie:", "oh-theme") ?>
                 <span class="apartaments-item-price"><?php echo __("Obliczam cenę wynajmu...", "oh-theme") ?></span>
             </span>
+            <?php endif; ?>
             <?php get_template_part(THEME_CMP_CMN, "btn", array(
             "link" => get_the_permalink(),
             "text" => __("Sprawdź szczegóły", "oh-theme"),

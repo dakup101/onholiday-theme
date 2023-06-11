@@ -35,6 +35,7 @@ export default function getPrices() {
 			.then((text) => {
 				const response = JSON.parse(text);
 				let price = 0;
+				console.log(response);
 				if (response.result.offerObject) {
 					const objectPriceDates =
 						response.result.offerObject.objectPricesDates;

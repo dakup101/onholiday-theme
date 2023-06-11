@@ -8,7 +8,6 @@ $lang_iframe = $lang == "pl" ? "1" : "3";
 $startDate = isset($_SESSION["searchDates"][0]) ? $_SESSION["searchDates"][0] : date('Y-m-d', strtotime($currentDate . ' +2 days'));
 $endDate = isset($_SESSION["searchDates"][1]) ? $_SESSION["searchDates"][1] : date('Y-m-d', strtotime($currentDate . ' +4 days'));
 
-
 if (!empty($_SESSION["searchDates"][0])) {
 	$apartament_link = "https://client8748.idosell.com/widget/booking/defaultchoice/" . "start_date/" . $startDate . "/end_date/" . $endDate . "/currency/1/language/" . $lang_iframe . "/persons-adult/" . $_SESSION["guests"] . "/?ob[" . $_SESSION["apartament"] . "]";
 } else $apartament_link = "https://client8748.idosell.com/widget2/index.php?ob[" . get_field("ido_id") . "]=&from_own_button=1&language=" . $lang_iframe;

@@ -88,3 +88,23 @@ function custom_post_redirect( $redirect_url ) {
 add_action( 'parse_query', function ( $wp_query ) {
     $wp_query->query_vars['cache_results'] = false;
  } );
+
+
+//  function restrict_contact_form_7_to_specific_page() {
+//     // Set the slug of the specific page where you want the plugin to work
+//     $allowed_page_slug = 'kontakt'; // Replace with your desired page slug
+
+//     // Get the current page
+//     $requested_url = $_SERVER['REQUEST_URI'];
+
+//     // Check if the current page is the allowed page or the admin panel
+//     if (is_admin() ||  (strpos($requested_url, $allowed_page_slug) !== false)) {
+//         // Return early to allow the Contact Form 7 plugin to work
+//         return;
+//     }
+//     // Disable the Contact Form 7 plugin
+//     wp_dequeue_script('contact-form-7');
+//     wp_dequeue_script('google-recaptcha');
+//     wp_dequeue_style('contact-form-7');
+// }
+// add_action('wp_enqueue_scripts', 'restrict_contact_form_7_to_specific_page');

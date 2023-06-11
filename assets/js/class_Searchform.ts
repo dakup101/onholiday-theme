@@ -1,7 +1,9 @@
 import flatpickr from "flatpickr";
-import "flatpickr/dist/flatpickr.css";
-import "flatpickr/dist/l10n/pl.js";
-import "flatpickr/dist/l10n/de.js";
+import "flatpickr/dist/flatpickr.min.css";
+
+function loadLocale(locale: string) {
+	return import(`flatpickr/dist/l10n/${locale}.js`);
+}
 
 export default class searchForm {
 	form;
@@ -106,50 +108,19 @@ export default class searchForm {
 		}
 		console.log("--- Form: change events handeled");
 	}
-	datePicker() {
+	async datePicker() {
 		let dateInput = this.inputs.dates as HTMLInputElement;
 		let lang = dateInput.getAttribute("data-lang");
-		let today = new Date();
-		let tomorrow = new Date(today.getTime() + 24 * 60 * 60 * 1000);
 		let calendar = null;
-		if (window.screen.width < 768) {
-			calendar = flatpickr(".search-date", {
-				locale: lang == "pl" ? "pl" : "de",
-				mode: "range",
-				wrap: true,
-				enableTime: false,
-				dateFormat: "Y-m-d",
-				minDate: tomorrow,
-				showMonths: 1,
-				onChange: function (selectedDates, dateStr, instance) {
-					if (selectedDates[0] && selectedDates[1]) {
-						instance.input.value = dateStr;
 
-						let from = flatpickr.formatDate(selectedDates[0], "Y-m-d");
-						let to = flatpickr.formatDate(selectedDates[1], "Y-m-d");
-						dateInput.value = from + "," + to;
-						dateInput.dispatchEvent(new Event("change"));
-					}
-				},
+		if (lang == "pl") {
+			loadLocale("pl").then(() => {
+				// Now you can use the 'pl' locale
+				calendar = initFlatpickr(dateInput, lang);
 			});
-		} else {
-			calendar = flatpickr(".search-date", {
-				locale: "pl",
-				mode: "range",
-				wrap: true,
-				enableTime: false,
-				dateFormat: "Y-m-d",
-				minDate: tomorrow,
-				showMonths: 2,
-				onChange: function (selectedDates, dateStr, instance) {
-					if (selectedDates[0] && selectedDates[1]) {
-						instance.input.value = dateStr;
-						let from = flatpickr.formatDate(selectedDates[0], "Y-m-d");
-						let to = flatpickr.formatDate(selectedDates[1], "Y-m-d");
-						dateInput.value = from + "," + to;
-						dateInput.dispatchEvent(new Event("change"));
-					}
-				},
+		} else if (lang == "de") {
+			loadLocale("de").then(() => {
+				calendar = initFlatpickr(dateInput, lang);
 			});
 		}
 
@@ -189,5 +160,48 @@ export default class searchForm {
 		) {
 			this.submit.classList.add("disabled");
 		}
+	}
+}
+
+function initFlatpickr(dateInput, lang) {
+	if (window.screen.width < 768) {
+		return flatpickr(".search-date", {
+			mode: "range",
+			wrap: true,
+			enableTime: false,
+			locale: lang,
+			dateFormat: "Y-m-d",
+			minDate: new Date(new Date().getTime() + 24 * 60 * 60 * 1000),
+			showMonths: 1,
+			onChange: function (selectedDates, dateStr, instance) {
+				if (selectedDates[0] && selectedDates[1]) {
+					instance.input.value = dateStr;
+
+					let from = flatpickr.formatDate(selectedDates[0], "Y-m-d");
+					let to = flatpickr.formatDate(selectedDates[1], "Y-m-d");
+					dateInput.value = from + "," + to;
+					dateInput.dispatchEvent(new Event("change"));
+				}
+			},
+		});
+	} else {
+		return flatpickr(".search-date", {
+			mode: "range",
+			wrap: true,
+			enableTime: false,
+			locale: lang,
+			dateFormat: "Y-m-d",
+			minDate: new Date(new Date().getTime() + 24 * 60 * 60 * 1000),
+			showMonths: 2,
+			onChange: function (selectedDates, dateStr, instance) {
+				if (selectedDates[0] && selectedDates[1]) {
+					instance.input.value = dateStr;
+					let from = flatpickr.formatDate(selectedDates[0], "Y-m-d");
+					let to = flatpickr.formatDate(selectedDates[1], "Y-m-d");
+					dateInput.value = from + "," + to;
+					dateInput.dispatchEvent(new Event("change"));
+				}
+			},
+		});
 	}
 }
